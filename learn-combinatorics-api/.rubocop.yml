@@ -1,0 +1,50 @@
+require: 
+  - rubocop-performance
+  - rubocop-rails
+  - rubocop-rspec # or rubocop-minitest
+
+AllCops:
+  Exclude:
+    - 'db/**/*'
+    - 'script/**/*'
+    - 'bin/**/*'## Style 
+    - 'config/**/*'
+Metrics/LineLength:
+  Max: 120
+RSpec/EmptyExampleGroup:
+  Enabled: false
+RSpec/MultipleExpectations:
+  Enabled: false
+RSpec/FilePath:
+  Enabled: false
+Metrics/BlockLength:
+  Exclude:
+    - config/**/*
+    - spec/**/*
+RSpec/ExampleLength:
+  Max: 50
+Lint/AmbiguousBlockAssociation:
+  Exclude:
+    - spec/**/*
+
+Style/Documentation:
+  Enabled: false
+
+Style/ClassAndModuleChildren:
+  Enabled: false
+
+## Metrics
+Metrics/AbcSize:
+  Enabled: false
+Metrics/MethodLength:
+  Enabled: false
+  Max: 20
+  Exclude:
+    - 'spec/**/*'
+Metrics/CyclomaticComplexity:
+  Enabled: false
+Metrics/PerceivedComplexity:
+  Enabled: false
+
+Naming/AccessorMethodName:
+  Enabled: false

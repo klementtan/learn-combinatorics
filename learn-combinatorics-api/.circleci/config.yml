@@ -1,0 +1,63 @@
+# Ruby CircleCI 2.0 configuration file
+#
+# Check https://circleci.com/docs/2.0/language-ruby/ for more details
+#
+version: 2.1
+workflows:
+  version: 2
+  lint_and_test:
+    jobs:
+      - lint
+      - test
+
+jobs:
+  lint:
+    docker:
+      - image: circleci/ruby:2.6.4
+    steps:
+      - checkout
+      - run:
+          name: Install rubocop
+          command: gem install rubocop rubocop-performance rubocop-rails rubocop-rspec
+      - run:
+          name: Execute lint
+          command: rubocop
+
+    
+  test:
+    docker:
+      # specify the version you desire here
+      - image: circleci/ruby:2.6.4-stretch
+        environment:
+          TEST_DATABASE_URL: postgresql://root@localhost/circle_test
+          CACHE_VERSION: v1
+      - image: circleci/postgres:9.6.5-alpine-ram
+    steps: # a collection of executable commands
+      - checkout # special step to check out source code to working directory
+      # Which version of bundler?
+      - run:
+          name: Install bundler
+          command: sudo gem install bundler -v 2.0.2
+      # Restore bundle cache
+      # Read about caching dependencies: https://circleci.com/docs/2.0/caching/
+      - restore_cache:
+          keys:
+            - rails-bundle-v1-{{ checksum "Gemfile.lock" }}
+      - run: # Install Ruby dependencies
+          name: Bundle Install
+          command: bundle check --path vendor/bundle || bundle install --deployment
+      # Store bundle cache for Ruby dependencies
+      - save_cache:
+          key: rails-bundle-v1-{{ checksum "Gemfile.lock" }}
+          paths:
+            - vendor/bundle
+      - run:
+          name: Wait for DB
+          command: dockerize -wait tcp://localhost:5432 -timeout 1m
+      - run:
+          name: Database setup
+          command: bin/rails db:schema:load --trace RAILS_ENV=test
+      - run:
+          name: Run rspec in parallel
+          command: |
+            bundle exec rspec
