@@ -33,7 +33,7 @@ test:
 #
 production:
   <<: *default
-  host: 'host.docker.internal'
+  host: <%= ENV['DATABASE_HOST'] %>
   user: <%= ENV['DATABASE_USER'] %>
   password: <%= ENV['DATABASE_PASSWORD'] %>
   database: learning_combinatorics_api_production
