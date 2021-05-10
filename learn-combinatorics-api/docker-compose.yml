@@ -9,5 +9,6 @@ services:
     volumes:
     - .:/app
     command: ["./scripts/start.sh"]
+    net: "host"
     ports:
       - "80:80"
