@@ -3,6 +3,7 @@
 Rails.application.routes.draw do
   default_url_options :host => ENV['HOST']
   get '/' => 'application#check'
+  get '/health_check' => 'application#health_check'
   namespace :api do
     namespace :v1 do
       get '/users' => 'users#get'

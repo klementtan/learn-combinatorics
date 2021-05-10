@@ -164,7 +164,7 @@ ActiveRecord::Schema.define(version: 2021_05_05_090149) do
     t.index ["attempt_id"], name: "index_submissions_on_attempt_id"
   end
 
-  create_table "user_default_role_tables", force: :cascade do |t|
+  create_table "user_default_roles", force: :cascade do |t|
     t.string "user_email"
     t.string "role"
   end

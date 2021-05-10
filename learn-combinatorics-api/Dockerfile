@@ -1,6 +1,6 @@
 FROM ruby:2.6.4
 
-WORKDIR /myapp
+WORKDIR /app
 EXPOSE 80
 RUN apt-get update && apt-get install -y curl gnupg
 
@@ -20,12 +20,7 @@ RUN apt-get -y update && \
 COPY Gemfile Gemfile.lock ./
 RUN gem install bundler && bundle install --jobs 20 --retry 5
 
-# Copying local always changes, therefore put it last
-COPY . ./
-
-
 ENV RAILS_ENV production
 
-RUN ./scripts/start.sh
 
-RUN EDITOR="mate --wait" bundle exec rails credentials:edit
+

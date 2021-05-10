@@ -29,6 +29,7 @@ config/credentials.yml.enc
 /config/master.key
 
 .env
+.env.prod
 
 .idea
 .generators

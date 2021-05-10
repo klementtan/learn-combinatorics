@@ -19,6 +19,7 @@ gem 'google-api-client', '~> 0.34'
 gem 'rack-cors'
 gem 'rails', '~> 6.0.3', '>= 6.0.3.1'
 gem 'simplecov-small-badge', require: false
+gem 'mimemagic', github: 'mimemagicrb/mimemagic', ref: '01f92d86d15d85cfd0f20dabd025dcbd36a8a60f'
 
 group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]

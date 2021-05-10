@@ -28,12 +28,13 @@ test:
 #
 # You can use this database configuration with:
 #
-production:
-  url: <%= ENV['DATABASE_URL'] %>
-#
 #production:
-#  <<: *default
-#  database: learning_combinatorics_api_production
-#  username: learning_combinatorics_api
-#  password: <%#= ENV['COMBINATORICS_API_DATABASE_PASSWORD'] %>
+#  url: <%#= ENV['DATABASE_URL'] %>
+#
+production:
+  <<: *default
+  host: 'host.docker.internal'
+  user: <%= ENV['DATABASE_USER'] %>
+  password: <%= ENV['DATABASE_PASSWORD'] %>
+  database: learning_combinatorics_api_production
 
