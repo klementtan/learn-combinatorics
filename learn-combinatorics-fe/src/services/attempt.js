@@ -66,5 +66,8 @@ export async function updateAttemptTime(attemptId, time) {
 export async function getAllAttemptAdmin() {
   return request(`${REACT_BACKEND_HOST}/api/v1/attempts`, {
     method: 'GET',
+    headers: {
+      Authorization: `Bearer ${localStorage.getItem('learn-combinatorics-token')}`,
+    },
   });
 }
