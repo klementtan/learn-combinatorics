@@ -21,7 +21,7 @@ export default [
           {
             path: '/',
             component: '../layouts/BasicLayout',
-            authority: ['admin', 'user'],
+            authority: ['ADMIN', 'PUBLIC_USER'],
             routes: [
               {
                 path: '/',

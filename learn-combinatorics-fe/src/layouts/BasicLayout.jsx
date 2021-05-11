@@ -91,7 +91,9 @@ const BasicLayout = (props) => {
     [location.pathname],
   );
   const { formatMessage } = useIntl();
-  console.log("location", window.location.pathname)
+  console.log("authority", authorized.authority)
+  console.log("nomatch", noMatch)
+  console.log("children", children)
   return (
     <ProLayout
       logo={logo}
