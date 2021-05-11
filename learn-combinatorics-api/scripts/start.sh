@@ -1,7 +1,7 @@
 #!/bin/bash -e
 
-if [[ -a /tmp/puma.pid ]]; then
-  rm /tmp/puma.pid
+if [[ -a /tmp/pids/server.pid ]]; then
+  rm /tmp/pids/server.pid
 fi
 echo $RAILS_ENV
 if [[ $RAILS_ENV == "production" ]]; then
