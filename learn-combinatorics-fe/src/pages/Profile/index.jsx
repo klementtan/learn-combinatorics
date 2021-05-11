@@ -14,6 +14,7 @@ const tailLayout = {
   wrapperCol: { offset: 8, span: 16 },
 };
 const Profile = (props) => {
+  console.log("profile props", props)
   const { user, loading} = props
   const { currentUser } = user
   const onFinish = async (user) => {
