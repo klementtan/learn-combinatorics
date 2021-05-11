@@ -24,7 +24,7 @@ export default [
             authority: ['ADMIN', 'PUBLIC_USER'],
             routes: [
                 {
-                  path: "/profile/",
+                  path: "/profile",
                   name: "Profile",
                   icon: 'user',
                   component: './UserProfile'
