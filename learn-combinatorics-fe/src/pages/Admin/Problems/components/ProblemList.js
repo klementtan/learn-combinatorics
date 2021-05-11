@@ -128,7 +128,7 @@ const ProblemList = props => {
         return (
           <Row key={`lecture_id:${idx}`}>
             <Tag>
-              <a href={`/admin/lectures?active_tab=2&lecture_id=${lecture?.id}`}>
+              <a href={`#/admin/lectures?active_tab=2&lecture_id=${lecture?.id}`}>
                 {' '}
                 {lecture?.title}
               </a>
@@ -217,7 +217,7 @@ const ProblemList = props => {
             {hints.map((hint, idx) => (
               <Col key={idx}>
                 <Tag>
-                  <a href={`/admin/hints?active_tab=2&hint_id=${hint?.id}`}>{hint?.title}</a>
+                  <a href={`#/admin/hints?active_tab=2&hint_id=${hint?.id}`}>{hint?.title}</a>
                 </Tag>
               </Col>
             ))}

@@ -182,7 +182,7 @@ const AttemptList = props => {
       render: (problem, idx) => {
         return (
           <Row key={idx}>
-              <a href={`/admin/problems?active_tab=2&problem_id=${problem?.id}`}>
+              <a href={`#/admin/problems?active_tab=2&problem_id=${problem?.id}`}>
                 {problem?.title}{' '}
               </a>
           </Row>

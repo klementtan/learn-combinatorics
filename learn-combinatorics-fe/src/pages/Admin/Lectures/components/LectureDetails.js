@@ -155,7 +155,7 @@ const LectureDetails = props => {
               dataSource={lecture?.problems}
               renderItem={problem => (
                 <List.Item>
-                  <Typography.Link href={`/admin/problems?problem_id=${problem.id}&active_tab=2`}>
+                  <Typography.Link href={`#/admin/problems?problem_id=${problem.id}&active_tab=2`}>
                     {problem.title}
                   </Typography.Link>
                 </List.Item>

@@ -123,7 +123,7 @@ const LectureList = props => {
         return (
           <Row key={`chapter_id:${idx}`}>
             <Tag>
-              <a href={`/admin/chapters?active_tab=2&chapter_id=${chapter?.id}`}>
+              <a href={`#/admin/chapters?active_tab=2&chapter_id=${chapter?.id}`}>
                 {' '}
                 {chapter?.title}
               </a>
@@ -175,7 +175,7 @@ const LectureList = props => {
             {problems.map((problem, idx) => (
               <Col key={idx}>
                 <Tag>
-                  <a href={`/admin/problems?layout=0&problem_id=${problem?.id}`}>
+                  <a href={`#/admin/problems?layout=0&problem_id=${problem?.id}`}>
                     {problem?.title}
                   </a>
                 </Tag>

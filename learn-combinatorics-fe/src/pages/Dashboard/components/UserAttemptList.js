@@ -47,7 +47,7 @@ const UserAttemptList = props => {
       render: (problem, idx) => {
         return (
           <Row key={idx}>
-            <a href={`/problems/${problem.id}/attempt`}>
+            <a href={`#/problems/${problem.id}/attempt`}>
               {problem?.title}{' '}
             </a>
           </Row>

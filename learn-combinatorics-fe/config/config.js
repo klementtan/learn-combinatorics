@@ -15,7 +15,7 @@ export default defineConfig({
   },
   exportStatic: {},
   history: {
-    type: 'browser',
+    type: 'hash',
   },
   locale: {
     // default zh-CN

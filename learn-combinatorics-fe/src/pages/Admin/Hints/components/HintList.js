@@ -128,7 +128,7 @@ const HintList = props => {
         return (
           <Row key={`problem_id=${idx}`}>
             <Tag>
-              <a href={`/admin/problems?active_tab=2&problem_id=${problem?.id}`}>
+              <a href={`#/admin/problems?active_tab=2&problem_id=${problem?.id}`}>
                 {' '}
                 {problem?.title}
               </a>

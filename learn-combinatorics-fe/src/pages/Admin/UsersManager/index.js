@@ -1,4 +1,4 @@
-import { Button, Tag, Input, Table, Space, Row, Col } from 'antd';
+import { Button, Tag, Input, Table, Space, Row, Col, Typography } from 'antd';
 import React, { useState, useRef, useEffect } from 'react';
 import { PageContainer } from '@ant-design/pro-layout';
 import { SearchOutlined } from '@ant-design/icons';
@@ -43,8 +43,8 @@ const Users = () => {
     {
       title: 'Name',
       dataIndex: 'name',
-      render: (title, record) => {
-        return <a href={`/problems/${record.id}/attempt`}>{title}</a>;
+      render: (name, record) => {
+        return <Typography.Text >{name}</Typography.Text>;
       },
       filterIcon: filtered => (
         <SearchOutlined style={{ color: filtered ? '#1890ff' : undefined }} />
@@ -87,7 +87,7 @@ const Users = () => {
       title: 'Gmail',
       dataIndex: 'primary_email',
       render: (title, record) => {
-        return <a href={`/problems/${record.id}/attempt`}>{title}</a>;
+        return <Typography.Text>{title}</Typography.Text>;
       },
       filterIcon: filtered => (
         <SearchOutlined style={{ color: filtered ? '#1890ff' : undefined }} />
@@ -130,7 +130,7 @@ const Users = () => {
       title: 'NUS Email',
       dataIndex: 'nus_email',
       render: (title, record) => {
-        return <a href={`/problems/${record.id}/attempt`}>{title}</a>;
+        return <Typography.Text>{title}</Typography.Text>;
       },
       filterIcon: filtered => (
         <SearchOutlined style={{ color: filtered ? '#1890ff' : undefined }} />

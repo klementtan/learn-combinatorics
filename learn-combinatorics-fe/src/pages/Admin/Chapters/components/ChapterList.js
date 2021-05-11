@@ -126,7 +126,7 @@ const ChapterList = props => {
               <Col key={idx}>
                 <Tag>
                   <Typography.Link>
-                    <a href={`/admin/lectures?active_tab=2&lecture_id=${lecture?.id}`}>
+                    <a href={`#/admin/lectures?active_tab=2&lecture_id=${lecture?.id}`}>
                       {lecture?.title}{' '}
                     </a>
                   </Typography.Link>

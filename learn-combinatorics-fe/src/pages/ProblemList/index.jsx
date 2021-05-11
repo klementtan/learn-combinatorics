@@ -40,7 +40,7 @@ const ProblemList = () => {
       render: (title, problem) => {
         return (
           <>
-            {problem.has_access? <a href={`/problems/${problem.id}/attempt`}>{title}</a> :
+            {problem.has_access? <a href={`#/problems/${problem.id}/attempt`}>{title}</a> :
             <Row>
               <Typography.Text>
                 {title}
