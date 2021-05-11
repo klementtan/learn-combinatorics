@@ -25,13 +25,10 @@ const Model = {
         type: 'changeGoogleAuth',
         payload: '',
       });
-      if (window.location.pathname !== '/user/login' && !redirect) {
         history.replace({
           pathname: '/user/login',
         });
-
         localStorage.setItem('learn-combinatorics-token', '');
-      }
     },
   },
   reducers: {

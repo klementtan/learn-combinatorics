@@ -6,7 +6,7 @@ const proSettings = {
   fixedHeader: false,
   fixSiderbar: true,
   colorWeak: false,
-  title: 'Learn Combinatorics',
+  title: 'Combinatorics',
   pwa: false,
   iconfontUrl: '',
 };
