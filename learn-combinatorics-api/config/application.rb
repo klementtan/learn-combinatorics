@@ -26,7 +26,7 @@ module LearningCombinatoricsApi
     config.load_defaults 6.0
     config.autoload_paths += Dir["#{config.root}/app/errors/**/"]
     config.autoload_paths += Dir["#{config.root}/app/enums/**/"]
-    config.action_mailer.default_url_options = { host: ENV['HOST'], protocol: ENV['PROTOCOL'], port: ENV['PORT'] }
+    config.action_mailer.default_url_options = { host: ENV['HOST'], port: ENV['PORT'] }
     config.middleware.insert_before 0, Rack::Cors do
       allow do
         origins '*'
