@@ -7,22 +7,6 @@ function getBase64(img, callback) {
   reader.readAsDataURL(img);
 }
 
-function beforeUpload(file) {
-  const isJpgOrPng = file.type === 'image/jpeg' || file.type === 'image/png';
-  if (!isJpgOrPng) {
-    message.error('You can only upload JPG/PNG file!');
-  }
-  const isLt2M = file.size / 1024 / 1024 < 2;
-  if (!isLt2M) {
-    message.error('Image must smaller than 2MB!');
-  }
-  return isJpgOrPng && isLt2M;
-}
-
-function uploadPicture (file) {
-  return
-}
-
 class AvatarUploader extends React.Component {
   state = {
     loading: false,
@@ -62,25 +46,3 @@ class AvatarUploader extends React.Component {
 }
 
 export default AvatarUploader
-
-// <div
-// style={{
-//   width: '100%'
-// }}
-// >
-// <Upload
-// style={{
-//   width: '100%'
-// }}
-// name="avatar"
-// listType="picture-card"
-// className="avatar-uploader"
-// showUploadList={false}
-// action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
-// beforeUpload={beforeUpload}
-// onChange={this.handleChange}
-//   >
-//   {this.props.avatarUrl ? <img src={this.props.avatarUrl} alt="avatar" style={{ width: '100%' }} /> : uploadButton}
-// </Upload>
-// <Alert message="Click on your picture to change it" type="info" />
-// </div>

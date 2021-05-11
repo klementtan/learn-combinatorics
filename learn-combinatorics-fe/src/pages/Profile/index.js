@@ -2,9 +2,9 @@ import {connect} from "umi";
 import {PageContainer} from "@ant-design/pro-layout";
 import React from "react";
 import { Card, Row, Col ,Avatar, Button, Form, Input, Divider } from 'antd';
-import {UploadOutlined} from '@ant-design/icons'
-import AvatarUploader from "./AvatarUploader";
-import NusEmailVerification from "@/pages/Profile/NusEmailVerification";
+import {LoadingOutlined, PlusOutlined, UploadOutlined} from '@ant-design/icons'
+import AvatarUploader from "./components/AvatarUploader";
+import NusEmailVerification from "@/pages/Profile/components/NusEmailVerification";
 
 const layout = {
   labelCol: { span: 8 },
@@ -13,6 +13,50 @@ const layout = {
 const tailLayout = {
   wrapperCol: { offset: 8, span: 16 },
 };
+
+function getBase64(img, callback) {
+  const reader = new FileReader();
+  reader.addEventListener('load', () => callback(reader.result));
+  reader.readAsDataURL(img);
+}
+
+class AvatarUploader extends React.Component {
+  state = {
+    loading: false,
+  };
+
+  handleChange = info => {
+    if (info.file.status === 'uploading') {
+      this.setState({ loading: true });
+      return;
+    }
+    if (info.file.status === 'done') {
+      // Get this url from response in real world.
+      getBase64(info.file.originFileObj, imageUrl =>
+        this.setState({
+          imageUrl,
+          loading: false,
+        }),
+      );
+    }
+  };
+
+  render() {
+    const { loading, imageUrl } = this.state;
+    const uploadButton = (
+      <div>
+        {loading ? <LoadingOutlined /> : <PlusOutlined />}
+        <div style={{ marginTop: 8 }}>Upload</div>
+      </div>
+    );
+    return (
+      <Avatar
+        size={240}
+        src={this.props.avatarUrl}
+      />
+    );
+  }
+}
 const Profile = (props) => {
   console.log("profile props", props)
   const { user, loading} = props
