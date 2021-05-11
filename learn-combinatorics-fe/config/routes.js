@@ -35,7 +35,7 @@ export default [
                 component: './Dashboard'
               },
               {
-                path: '/profile',
+                path: '/user-profile',
                 name: 'profile',
                 icon: 'user',
                 component: './Profile',
