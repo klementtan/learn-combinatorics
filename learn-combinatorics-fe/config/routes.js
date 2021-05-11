@@ -34,13 +34,7 @@ export default [
                 icon: 'AreaChartOutlined',
                 component: './Dashboard'
               },
-              {
-                path: '/user-profile',
-                name: 'profile',
-                icon: 'user',
-                exact: true,
-                component: './Profile',
-              },
+
               {
                 path: '/admin',
                 name: 'admin',
@@ -106,6 +100,13 @@ export default [
                     component: './ProblemAttempt',
                   },
                 ],
+              },
+              {
+                path: '/user-profile',
+                name: 'profile',
+                icon: 'user',
+                exact: true,
+                component: './Profile',
               },
               {
                 component: './404',
