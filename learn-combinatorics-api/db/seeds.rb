@@ -53,5 +53,7 @@ problems.each do |problem|
   end
 end
 
+UserDefaultRole.create!(user_email: 'klement.tandn@gmail.com', role: Roles::ADMIN)
+
 
 
