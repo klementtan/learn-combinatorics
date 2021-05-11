@@ -38,6 +38,7 @@ export default [
                 path: '/user-profile',
                 name: 'profile',
                 icon: 'user',
+                exact: true,
                 component: './Profile',
               },
               {
