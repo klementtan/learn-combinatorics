@@ -91,9 +91,7 @@ const BasicLayout = (props) => {
     [location.pathname],
   );
   const { formatMessage } = useIntl();
-  console.log("authority", authorized.authority)
-  console.log("nomatch", noMatch)
-  console.log("children", children)
+
   return (
     <ProLayout
       logo={logo}
@@ -139,6 +137,8 @@ const BasicLayout = (props) => {
       }}
     >
       <Authorized authority={authorized.authority} noMatch={noMatch}>
+        <div>foo</div>
+        {console.log("children")}
         {children}
       </Authorized>
     </ProLayout>

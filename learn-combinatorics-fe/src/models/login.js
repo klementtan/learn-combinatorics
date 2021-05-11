@@ -17,7 +17,6 @@ const Model = {
         payload: payload.tokenObj.id_token,
       }); // Login successfull
       localStorage.setItem('learn-combinatorics-token', payload.tokenObj.id_token);
-      console.log("token in model", localStorage.getItem('learn-combinatorics-token'))
     },
 
     *logout({ payload }, { call, put }) {

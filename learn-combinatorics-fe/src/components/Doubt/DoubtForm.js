@@ -19,7 +19,6 @@ const DoubtForm = props => {
     setLoading(true);
     createDoubtThread(doubtThread)
       .then(async response => {
-        console.log('Created doubt thread. Response from server', response);
         const { dispatch } = props;
         if (dispatch) {
           await dispatch({
