@@ -22,57 +22,56 @@ const Profile = (props) => {
   }
   return(
     <PageContainer>
-      <div>foo</div>
-      {/*<Card>*/}
-      {/*  <Row*/}
-      {/*    justify={"center"}*/}
-      {/*  >*/}
-      {/*    <Col>*/}
-      {/*      <AvatarUploader*/}
-      {/*        avatarUrl={currentUser.avatar_url}*/}
-      {/*      />*/}
-      {/*    </Col>*/}
-      {/*  </Row>*/}
-      {/*  <Row*/}
-      {/*    style={{*/}
-      {/*      marginTop:"1em"*/}
-      {/*    }}*/}
-      {/*    justify={"center"}*/}
-      {/*  >*/}
-      {/*    <Col>*/}
-      {/*      <Form*/}
-      {/*        name="basic"*/}
-      {/*        initialValues={{ name: currentUser.name, primary_email: currentUser.primary_email, nus_email:currentUser.nus_email }}*/}
-      {/*        onFinish={onFinish}*/}
-      {/*        onFinishFailed={onFinishFailed}*/}
-      {/*      >*/}
-      {/*        <Form.Item*/}
-      {/*          label="Name"*/}
-      {/*          name="name"*/}
-      {/*          rules={[{ required: true, message: 'Please input your name!' }]}*/}
-      {/*        >*/}
-      {/*          <Input />*/}
-      {/*        </Form.Item>*/}
+      <Card>
+        <Row
+          justify={"center"}
+        >
+          <Col>
+            <AvatarUploader
+              avatarUrl={currentUser.avatar_url}
+            />
+          </Col>
+        </Row>
+        <Row
+          style={{
+            marginTop:"1em"
+          }}
+          justify={"center"}
+        >
+          <Col>
+            <Form
+              name="basic"
+              initialValues={{ name: currentUser.name, primary_email: currentUser.primary_email, nus_email:currentUser.nus_email }}
+              onFinish={onFinish}
+              onFinishFailed={onFinishFailed}
+            >
+              <Form.Item
+                label="Name"
+                name="name"
+                rules={[{ required: true, message: 'Please input your name!' }]}
+              >
+                <Input />
+              </Form.Item>
 
-      {/*        <Form.Item*/}
-      {/*          label="Primary Email"*/}
-      {/*          name="primary_email"*/}
-      {/*        >*/}
-      {/*          <Input*/}
-      {/*            disabled*/}
-      {/*          />*/}
-      {/*        </Form.Item>*/}
-      {/*        <Form.Item >*/}
-      {/*          <Button type="primary" htmlType="submit" loading={loading}>*/}
-      {/*           Save*/}
-      {/*          </Button>*/}
-      {/*        </Form.Item>*/}
-      {/*      </Form>*/}
-      {/*      <Divider plain>Verify NUS email</Divider>*/}
-      {/*        <NusEmailVerification/>*/}
-      {/*    </Col>*/}
-      {/*  </Row>*/}
-      {/*</Card>*/}
+              <Form.Item
+                label="Primary Email"
+                name="primary_email"
+              >
+                <Input
+                  disabled
+                />
+              </Form.Item>
+              <Form.Item >
+                <Button type="primary" htmlType="submit" loading={loading}>
+                 Save
+                </Button>
+              </Form.Item>
+            </Form>
+            <Divider plain>Verify NUS email</Divider>
+              <NusEmailVerification/>
+          </Col>
+        </Row>
+      </Card>
     </PageContainer>
   )
 }
