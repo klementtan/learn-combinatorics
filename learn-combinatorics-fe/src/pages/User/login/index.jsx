@@ -67,7 +67,6 @@ const Login = (props) => {
     });
 
   }
-  alert(REACT_APP_GOOGLE_CLIENT_ID)
   return (
     <div className={styles.main}>
       <GoogleLogin
