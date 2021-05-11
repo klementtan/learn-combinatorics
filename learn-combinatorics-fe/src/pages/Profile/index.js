@@ -2,18 +2,8 @@ import {connect} from "umi";
 import {PageContainer} from "@ant-design/pro-layout";
 import React from "react";
 import { Card, Row, Col ,Avatar, Button, Form, Input, Divider } from 'antd';
-import {LoadingOutlined, PlusOutlined, UploadOutlined} from '@ant-design/icons'
 import AvatarUploader from "./components/AvatarUploader";
-import NusEmailVerification from "@/pages/Profile/components/NusEmailVerification";
-
-const layout = {
-  labelCol: { span: 8 },
-  wrapperCol: { span: 16 },
-};
-const tailLayout = {
-  wrapperCol: { offset: 8, span: 16 },
-};
-
+import NusEmailVerification from "./components/NusEmailVerification";
 
 const Profile = (props) => {
   console.log("profile props", props)
@@ -50,7 +40,6 @@ const Profile = (props) => {
         >
           <Col>
             <Form
-              {...layout}
               name="basic"
               initialValues={{ name: currentUser.name, primary_email: currentUser.primary_email, nus_email:currentUser.nus_email }}
               onFinish={onFinish}
@@ -72,7 +61,7 @@ const Profile = (props) => {
                   disabled
                 />
               </Form.Item>
-              <Form.Item {...tailLayout}>
+              <Form.Item >
                 <Button type="primary" htmlType="submit" loading={loading}>
                  Save
                 </Button>
