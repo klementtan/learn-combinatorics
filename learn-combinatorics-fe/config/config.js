@@ -4,6 +4,8 @@ import defaultSettings from './defaultSettings';
 import proxy from './proxy';
 import routes from './routes';
 
+require('dotenv').config()
+
 const { REACT_APP_ENV } = process.env;
 export default defineConfig({
   hash: true,
@@ -36,9 +38,8 @@ export default defineConfig({
   title: false,
   proxy: proxy[REACT_APP_ENV || 'dev'],
   define: {
-    REACT_APP_GOOGLE_CLIENT_ID:
-      '608775942205-ag865bismt1ojrhi01r7kjk13hctmlk0.apps.googleusercontent.com',
-    REACT_BACKEND_HOST: 'http://localhost:3000',
+    REACT_APP_GOOGLE_CLIENT_ID: process.env.REACT_APP_GOOGLE_CLIENT_ID,
+    REACT_BACKEND_HOST: process.env.REACT_BACKEND_HOST,
   },
   manifest: {
     basePath: '/',

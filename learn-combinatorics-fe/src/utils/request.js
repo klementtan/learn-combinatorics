@@ -42,8 +42,7 @@ const errorHandler = error => {
   } else if (!response) {
     notification.error({
       description: 'Unexpected error.',
-      // TODO
-      message: 'Please report the error to GITHUB_ISSUE',
+      message: 'Please report the error to https://github.com/klementtan/learn-combinatorics/issues',
     });
   }
   throw error.data;
