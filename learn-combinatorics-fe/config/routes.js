@@ -30,7 +30,7 @@ export default [
                   name: "Profile",
                   icon: 'user',
                   exact: true,
-                  component: './Profile'
+                  component: './UserProfile'
               },
               {
                 path: '/',
