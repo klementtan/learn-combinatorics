@@ -91,6 +91,7 @@ const BasicLayout = (props) => {
     [location.pathname],
   );
   const { formatMessage } = useIntl();
+  console.log("temp")
   return (
     <ProLayout
       logo={logo}
