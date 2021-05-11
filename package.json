@@ -4,6 +4,6 @@
   "private": true,
   "description": "A platform to allow students to learn practice combinatorics.",
   "scripts": {
-    "build": "cd learn-combinatorics-fe && yarn umi build"
+    "build": "cd learn-combinatorics-fe && npm run build"
   }
 }
