@@ -54,7 +54,9 @@ const Login = (props) => {
       type: 'login/login',
       payload: { ...values },
     });
-
+    await dispatch({
+      type: 'user/fetchCurrent',
+    });
     history.push("/")
   };
 
