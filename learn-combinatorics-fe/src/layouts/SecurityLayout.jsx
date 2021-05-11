@@ -38,8 +38,10 @@ const SecurityLayout = (props) => {
   const isLogin = currentUser && currentUser.id;
 
     if ((!loaded) || (!isLogin && loginLoading) ||(!isLogin && userLoading) || !isReady) {
+      console.log("in loading")
     return <PageLoading />;
   }
+    console.log("exit loading")
 
     if (isReady && !isLogin && !window.location.pathname.includes('/user/login')) {
     return <Redirect to={`#/user/login?action=logout`} />;
