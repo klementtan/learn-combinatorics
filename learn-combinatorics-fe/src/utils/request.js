@@ -50,12 +50,9 @@ const errorHandler = error => {
 /**
  * 配置request请求时的默认参数
  */
-
+console.log("token", localStorage.getItem('learn-combinatorics-token'))
 const request = extend({
-  errorHandler,
-  headers: {
-    Authorization: `Bearer ${localStorage.getItem('learn-combinatorics-token')}`,
-  },
+  errorHandler
   // 默认错误处理
 });
 

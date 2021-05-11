@@ -8,6 +8,7 @@ import styles from "@/pages/User/login/index.less";
 const SecurityLayout = (props) => {
   const [isReady, setIsReady] = useState(false)
   const fetchCurrentUser = async values => {
+    console.log(values)
     const { dispatch } = props;
     if (dispatch) {
       await dispatch({
@@ -28,8 +29,6 @@ const SecurityLayout = (props) => {
     },
     onSuccess:fetchCurrentUser
   })
-
-
   const { children, loginLoading, userLoading, currentUser,login } = props; // You can replace it to your authentication rule (such as check token exists)
   // 你可以把它替换成你自己的登录认证规则（比如判断 token 是否存在）
   const token = localStorage.getItem('learn-combinatorics-token')

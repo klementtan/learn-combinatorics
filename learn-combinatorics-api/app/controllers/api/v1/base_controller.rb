@@ -22,7 +22,7 @@ class Api::V1::BaseController < ApplicationController
     response = HTTParty.post("https://oauth2.googleapis.com/tokeninfo?id_token=#{token}")
     response_json = JSON.parse(response.body)
     raise GoogleAuthenticationError, response_json['error'] if response_json['error']
-
+    
     @user = User.find_by_primary_email([response_json["email"]])
 
     @user ||= User.create!(name: response_json["name"], primary_email: response_json["email"])
