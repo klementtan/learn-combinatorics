@@ -58,4 +58,5 @@ export default {
   'menu.admin.problems': 'Problems',
   'menu.admin.hints': 'Hints',
   'menu.admin.attempts': 'Attempts',
+  'menu.Profile': 'Profile'
 };
