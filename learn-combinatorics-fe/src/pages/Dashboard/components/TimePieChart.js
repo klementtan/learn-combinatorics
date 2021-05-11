@@ -48,7 +48,6 @@ const TimePieChart = (props) => {
       dataMap[obj.id].count += attempt.attempt_time
       total +=  attempt.attempt_time
     })
-    console.log(attempts)
     let res = []
     Object.keys(dataMap).forEach(id => {
       res.push({
