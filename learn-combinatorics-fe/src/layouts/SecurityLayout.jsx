@@ -8,7 +8,6 @@ import styles from "@/pages/User/login/index.less";
 const SecurityLayout = (props) => {
   const [isReady, setIsReady] = useState(false)
   const fetchCurrentUser = async values => {
-    console.log(values)
     const { dispatch } = props;
     if (dispatch) {
       await dispatch({

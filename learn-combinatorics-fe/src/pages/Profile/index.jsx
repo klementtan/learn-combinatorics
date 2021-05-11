@@ -27,6 +27,7 @@ const Profile = (props) => {
   }
   const onFinishFailed = (values) => {
   }
+  console.log("in profile")
   return(
     <PageContainer>
       <Card>
