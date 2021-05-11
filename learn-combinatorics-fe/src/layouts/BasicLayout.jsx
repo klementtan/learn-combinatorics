@@ -137,8 +137,6 @@ const BasicLayout = (props) => {
       }}
     >
       <Authorized authority={authorized.authority} noMatch={noMatch}>
-        <div>foo</div>
-        {console.log("children")}
         {children}
       </Authorized>
     </ProLayout>
