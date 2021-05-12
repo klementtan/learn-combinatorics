@@ -40,33 +40,33 @@ const Settings = (props) => {
             justify={'center'}
           >
             <Col>
-              <Form
-                initialValues={{
-                  name: currentUser.name,
-                  primary_email: currentUser.primary_email,
-                  nus_email: currentUser.nus_email,
-                }}
-                onFinish={onFinish}
-              >
-                <Form.Item
-                  label="Name"
-                  name="name"
-                  rules={[{ required: true, message: 'Please input your name!' }]}
-                >
-                  <Input />
-                </Form.Item>
+              {/*<Form*/}
+              {/*  initialValues={{*/}
+              {/*    name: currentUser.name,*/}
+              {/*    primary_email: currentUser.primary_email,*/}
+              {/*    nus_email: currentUser.nus_email,*/}
+              {/*  }}*/}
+              {/*  onFinish={onFinish}*/}
+              {/*>*/}
+              {/*  <Form.Item*/}
+              {/*    label="Name"*/}
+              {/*    name="name"*/}
+              {/*    rules={[{ required: true, message: 'Please input your name!' }]}*/}
+              {/*  >*/}
+              {/*    <Input />*/}
+              {/*  </Form.Item>*/}
 
-                <Form.Item label="Primary Email" name="primary_email">
-                  <Input disabled />
-                </Form.Item>
-                <Form.Item>
-                  <Button type="primary" htmlType="submit" loading={loading}>
-                    Save
-                  </Button>
-                </Form.Item>
-              </Form>
-              <Divider plain>Verify NUS email</Divider>
-              {/*<NusEmailVerification />*/}
+              {/*  <Form.Item label="Primary Email" name="primary_email">*/}
+              {/*    <Input disabled />*/}
+              {/*  </Form.Item>*/}
+              {/*  <Form.Item>*/}
+              {/*    <Button type="primary" htmlType="submit" loading={loading}>*/}
+              {/*      Save*/}
+              {/*    </Button>*/}
+              {/*  </Form.Item>*/}
+              {/*</Form>*/}
+              {/*<Divider plain>Verify NUS email</Divider>*/}
+              <NusEmailVerification />
             </Col>
           </Row>
         </Card>
