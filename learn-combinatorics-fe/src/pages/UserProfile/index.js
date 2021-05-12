@@ -21,7 +21,9 @@ const Profile = (props) => {
   const onFinishFailed = (values) => {
   }
   return(
-    <PageContainer>
+    <PageContainer
+      key={"user_profile"}
+    >
       <Card>
         <Row
           justify={"center"}
