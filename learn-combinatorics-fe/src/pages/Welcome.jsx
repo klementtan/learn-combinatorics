@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import { PageContainer } from '@ant-design/pro-layout';
 import { Card, Alert,Row, Form, Input,Divider, Col, Button ,Typography } from 'antd';
 import { useIntl, FormattedMessage, connect } from 'umi';
@@ -16,20 +16,28 @@ const CodePreview = ({ children }) => (
 );
 
 const Settings = (props) => {
-  const intl = useIntl();
     console.log('profile props', props);
   const { user, loading } = props;
   const { currentUser } = user;
+  const [currUser, setCurrUser] = useState({})
   const onFinish = async user => {
     await updateProfile(user)
     const { dispatch } = props;
     if (dispatch) {
       await dispatch({
-        type: 'user/fetchCurrent',
+        type: 'user/updateCurrent',
         user: user,
       });
     }
   };
+  useEffect(() => {
+    if (JSON.stringify(currUser) !== JSON.stringify({}))  return;
+    if (currentUser) setCurrUser({
+      name: currentUser.name,
+      primary_email: currentUser.primary_email,
+    })
+  })
+  console.log(currUser)
   return (
       <PageContainer>
         <Card>
@@ -40,32 +48,31 @@ const Settings = (props) => {
             justify={'center'}
           >
             <Col>
-              {/*<Form*/}
-              {/*  initialValues={{*/}
-              {/*    name: currentUser.name,*/}
-              {/*    primary_email: currentUser.primary_email,*/}
-              {/*    nus_email: currentUser.nus_email,*/}
-              {/*  }}*/}
-              {/*  onFinish={onFinish}*/}
-              {/*>*/}
-              {/*  <Form.Item*/}
-              {/*    label="Name"*/}
-              {/*    name="name"*/}
-              {/*    rules={[{ required: true, message: 'Please input your name!' }]}*/}
-              {/*  >*/}
-              {/*    <Input />*/}
-              {/*  </Form.Item>*/}
+              <Form
+                name={"userprofile"}
+              >
+                <Form.Item
+                  label="Name"
+                  rules={[{ required: true, message: 'Please input your name!' }]}
+                >
+                  <Input
+                    value={currUser.name}
+                    onChange={e => setCurrUser({...currUser, name: e.target.value})}
+                  />
+                </Form.Item>
 
-              {/*  <Form.Item label="Primary Email" name="primary_email">*/}
-              {/*    <Input disabled />*/}
-              {/*  </Form.Item>*/}
-              {/*  <Form.Item>*/}
-              {/*    <Button type="primary" htmlType="submit" loading={loading}>*/}
-              {/*      Save*/}
-              {/*    </Button>*/}
-              {/*  </Form.Item>*/}
-              {/*</Form>*/}
-              {/*<Divider plain>Verify NUS email</Divider>*/}
+                <Form.Item label="Primary Email" >
+                  <Input disabled
+                         value={currUser.primary_email}
+                  />
+                </Form.Item>
+                <Form.Item>
+                  <Button type="primary" onClick={onFinish} loading={loading}>
+                    Save
+                  </Button>
+                </Form.Item>
+              </Form>
+              <Divider plain>Verify NUS email</Divider>
               <NusEmailVerification />
             </Col>
           </Row>
@@ -90,6 +97,7 @@ export default connect(({ user, loading }) => ({
 //   const { user, loading } = props;
 //   const { currentUser } = user;
 //   const onFinish = async user => {
+//     await updateProfile(user)
 //     const { dispatch } = props;
 //     if (dispatch) {
 //       await dispatch({
