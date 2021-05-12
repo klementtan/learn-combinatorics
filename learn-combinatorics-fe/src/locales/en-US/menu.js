@@ -59,4 +59,5 @@ export default {
   'menu.admin.hints': 'Hints',
   'menu.admin.attempts': 'Attempts',
   'menu.Profile': 'Profile',
+  'menu.Settings': 'Settings',
 };
