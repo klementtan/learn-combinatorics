@@ -21,7 +21,7 @@ const Profile = (props) => {
   const onFinishFailed = (values) => {
   }
   return(
-    <PageContainer
+    <div
       key={"user_profile"}
     >
       <Card>
@@ -74,7 +74,7 @@ const Profile = (props) => {
           </Col>
         </Row>
       </Card>
-    </PageContainer>
+    </div>
   )
 }
 
