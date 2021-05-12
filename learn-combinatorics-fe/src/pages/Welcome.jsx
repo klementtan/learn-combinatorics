@@ -5,6 +5,7 @@ import { useIntl, FormattedMessage, connect } from 'umi';
 import styles from './Welcome.less';
 import NusEmailVerification from "@/components/Settings/NusEmailVerification";
 import ErrorBoundary from "@/components/ErrorBoundary"
+import {updateProfile} from "@/services/user";
 
 const CodePreview = ({ children }) => (
   <pre className={styles.pre}>
@@ -20,10 +21,11 @@ const Settings = (props) => {
   const { user, loading } = props;
   const { currentUser } = user;
   const onFinish = async user => {
+    await updateProfile(user)
     const { dispatch } = props;
     if (dispatch) {
       await dispatch({
-        type: 'user/updateCurrent',
+        type: 'user/fetchCurrent',
         user: user,
       });
     }
@@ -39,7 +41,6 @@ const Settings = (props) => {
           >
             <Col>
               <Form
-                name="basic"
                 initialValues={{
                   name: currentUser.name,
                   primary_email: currentUser.primary_email,
@@ -65,7 +66,7 @@ const Settings = (props) => {
                 </Form.Item>
               </Form>
               <Divider plain>Verify NUS email</Divider>
-              <NusEmailVerification />
+              {/*<NusEmailVerification />*/}
             </Col>
           </Row>
         </Card>

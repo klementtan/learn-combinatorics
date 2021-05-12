@@ -1,8 +1,8 @@
-import {connect} from "umi";
 import React, {useState} from "react";
 import {Card, Row, Col, Avatar, Button, Form, Input, Divider, Typography, Tag, Alert} from 'antd';
 import {verifyNusEmailRequest, verifyOtp} from "@/services/user"
 import {UserAccessLevelTag} from "@/components/Users/UsersAccessLevel";
+import {connect} from "umi";
 const layout = {
   labelCol: { span: 8 },
   wrapperCol: { span: 16 },
