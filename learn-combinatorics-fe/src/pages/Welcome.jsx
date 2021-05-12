@@ -44,32 +44,32 @@ const Settings = (props) => {
             justify={'center'}
           >
             <Col>
-              <Form
-                name={"userprofile"}
-              >
-                <Form.Item
-                  label="Name"
-                  rules={[{ required: true, message: 'Please input your name!' }]}
-                >
-                  <Input
-                    value={currUser.name}
-                    onChange={e => setCurrUser({...currUser, name: e.target.value})}
-                  />
-                </Form.Item>
+              {/*<Form*/}
+              {/*  name={"userprofile"}*/}
+              {/*>*/}
+              {/*  <Form.Item*/}
+              {/*    label="Name"*/}
+              {/*    rules={[{ required: true, message: 'Please input your name!' }]}*/}
+              {/*  >*/}
+              {/*    <Input*/}
+              {/*      value={currUser.name}*/}
+              {/*      onChange={e => setCurrUser({...currUser, name: e.target.value})}*/}
+              {/*    />*/}
+              {/*  </Form.Item>*/}
 
-                <Form.Item label="Primary Email" >
-                  <Input disabled
-                         value={currUser.primary_email}
-                  />
-                </Form.Item>
-                <Form.Item>
-                  <Button type="primary" onClick={onFinish} loading={loading}>
-                    Save
-                  </Button>
-                </Form.Item>
-              </Form>
+              {/*  <Form.Item label="Primary Email" >*/}
+              {/*    <Input disabled*/}
+              {/*           value={currUser.primary_email}*/}
+              {/*    />*/}
+              {/*  </Form.Item>*/}
+              {/*  <Form.Item>*/}
+              {/*    <Button type="primary" onClick={onFinish} loading={loading}>*/}
+              {/*      Save*/}
+              {/*    </Button>*/}
+              {/*  </Form.Item>*/}
+              {/*</Form>*/}
               <Divider plain>Verify NUS email</Divider>
-              <NusEmailVerification />
+              {/*<NusEmailVerification />*/}
             </Col>
           </Row>
         </Card>
