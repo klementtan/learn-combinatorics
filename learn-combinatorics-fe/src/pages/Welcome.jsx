@@ -69,7 +69,7 @@ const Settings = (props) => {
               {/*  </Form.Item>*/}
               {/*</Form>*/}
               <Divider plain>Verify NUS email</Divider>
-              {/*<NusEmailVerification />*/}
+              <NusEmailVerification />
             </Col>
           </Row>
         </Card>
