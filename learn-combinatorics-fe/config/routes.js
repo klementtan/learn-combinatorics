@@ -37,7 +37,7 @@ export default [
                 path: '/settings',
                 name: 'Settings',
                 icon: 'user',
-                component: './Profile',
+                component: './Settings',
               },
               {
                 path: '/admin',

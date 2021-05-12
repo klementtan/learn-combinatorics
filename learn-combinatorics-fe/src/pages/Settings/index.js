@@ -5,7 +5,7 @@ import { Card, Row, Col, Avatar, Button, Form, Input, Divider } from 'antd';
 import AvatarUploader from './components/AvatarUploader';
 import NusEmailVerification from './components/NusEmailVerification';
 
-const Profile = props => {
+const Settings = props => {
   console.log('profile props', props);
   const { user, loading } = props;
   const { currentUser } = user;
@@ -20,7 +20,7 @@ const Profile = props => {
   };
   const onFinishFailed = values => {};
   return (
-    <div key={'user_profile'}>
+    <PageContainer>
       <Card>
         <Row justify={'center'}>
           <Col>
@@ -66,11 +66,11 @@ const Profile = props => {
           </Col>
         </Row>
       </Card>
-    </div>
+    </PageContainer>
   );
 };
 
 export default connect(({ user, loading }) => ({
   user: user,
   loading: loading.models.user,
-}))(Profile);
+}))(Settings);
