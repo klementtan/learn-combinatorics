@@ -3,6 +3,7 @@ import { PageContainer } from '@ant-design/pro-layout';
 import TimeCard from '@/pages/Dashboard/components/TimeCard';
 import { connect } from 'umi';
 import UserAttemptList from '@/pages/Dashboard/components/UserAttemptList';
+import NusEmailVerification from "@/components/Settings/NusEmailVerification";
 const Dashboard = props => {
   const [problems, setProblems] = useState(null);
   const [search, setSearch] = useState({
@@ -33,6 +34,7 @@ const Dashboard = props => {
           marginTop: '1em',
         }}
       />
+      <NusEmailVerification/>
     </PageContainer>
   );
 };

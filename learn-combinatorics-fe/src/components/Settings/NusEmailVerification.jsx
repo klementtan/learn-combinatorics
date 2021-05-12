@@ -3,13 +3,7 @@ import {Card, Row, Col, Avatar, Button, Form, Input, Divider, Typography, Tag, A
 import {verifyNusEmailRequest, verifyOtp} from "@/services/user"
 import {UserAccessLevelTag} from "@/components/Users/UsersAccessLevel";
 import {connect} from "umi";
-const layout = {
-  labelCol: { span: 8 },
-  wrapperCol: { span: 16 },
-};
-const tailLayout = {
-  wrapperCol: { offset: 8, span: 16 },
-};
+
 const NusEmailVerification = (props) => {
   const { user, loading} = props
   const { currentUser } = user
@@ -19,7 +13,7 @@ const NusEmailVerification = (props) => {
   const [submitOtpResponse, setSubmitOtpResponse] = useState(null)
   const onFinishSendEmail = async (nus_email) => {
     setSubmitEmailLoading(true)
-    verifyNusEmailRequest(nus_email).then(() => {
+    await verifyNusEmailRequest(nus_email).then(() => {
       setSubmitEmailResponse({success: "OTP successfully sent to email"})
     }).catch((err) => {
       setSubmitEmailResponse({error: "Failed to send OTP to email"})
@@ -55,84 +49,80 @@ const NusEmailVerification = (props) => {
 
   }
   return(
-    <div>
+    <Card
+      title={"Access Level"}
+      style={{marginTop: "1em"}}
+    >
       <Row
-        style={{
-          marginBottom: "1em"
-        }}
-      >
-        <Typography.Title level={5}
-          style={{
-            marginRight: "1em"
-          }}
-        >
-          Access level
-        </Typography.Title>
-        {
-          renderAccessLevelTags()
-        }
-      </Row>
-
-      <Form
-        {...layout}
-        name="basic"
-        initialValues={{ nus_email:currentUser.nus_email }}
-        onFinish={onFinishSendEmail}
+        justify={"center"}
       >
 
-        <Form.Item
-          label="Nus Email"
-          name="nus_email"
-        >
-          <Input />
-        </Form.Item>
-
-
-        <Form.Item {...tailLayout}>
-          <Button type="primary" htmlType="submit" loading={submitEmailLoading}>
-            Send OTP to email
-          </Button>
-        </Form.Item>
-      </Form>
-      {
-        submitEmailResponse && submitEmailResponse.success && <Alert message={submitEmailResponse.success} type={"success"}/>
-      }
-      {
-        submitEmailResponse && submitEmailResponse.error && <Alert message={submitEmailResponse.error} type={"error"}/>
-      }
-
-      {
-        submitEmailResponse && submitEmailResponse.success &&
         <Form
-          style={{
-            marginTop:"1em"
-          }}
-          {...layout}
+          style={{width: "75%"}}
           name="basic"
-          onFinish={onSubmitOtp}
+          initialValues={{ nus_email:currentUser.nus_email }}
+          onFinish={onFinishSendEmail}
         >
-
+          <Form.Item>
+            {
+              renderAccessLevelTags()
+            }
+          </Form.Item>
           <Form.Item
-            label="OTP"
-            name="otp"
+            label="Nus Email"
+            name="nus_email"
           >
             <Input />
           </Form.Item>
 
-          <Form.Item {...tailLayout}>
-            <Button type="primary" htmlType="submit" loading={submitOtpLoading || loading}>
-              Submit
+
+          <Form.Item >
+            <Button type="primary" htmlType="submit" loading={submitEmailLoading}>
+              Send OTP to email
             </Button>
+            {
+              submitEmailResponse && submitEmailResponse.success && <Alert style={{marginTop: "0.5em"}} message={submitEmailResponse.success} type={"success"}/>
+            }
+            {
+              submitEmailResponse && submitEmailResponse.error && <Alert style={{marginTop: "0.5em"}} message={submitEmailResponse.error} type={"error"}/>
+            }
           </Form.Item>
-          {
-            submitOtpResponse && submitOtpResponse.success && <Alert message={submitOtpResponse.success} type={"success"}/>
-          }
-          {
-            submitOtpResponse && submitOtpResponse.error && <Alert message={submitOtpResponse.error} type={"error"}/>
-          }
         </Form>
-      }
-    </div>
+
+
+        {
+          submitEmailResponse && submitEmailResponse.success &&
+          <Form
+            style={{
+              marginTop:"0.5em",
+              width: "75%"
+            }}
+            name="basic"
+            onFinish={onSubmitOtp}
+          >
+
+            <Form.Item
+              label="OTP"
+              name="otp"
+            >
+              <Input />
+            </Form.Item>
+
+            <Form.Item >
+              <Button type="primary" htmlType="submit" loading={submitOtpLoading || loading}>
+                Submit
+              </Button>
+            </Form.Item>
+            {
+              submitOtpResponse && submitOtpResponse.success && <Alert message={submitOtpResponse.success} type={"success"}/>
+            }
+            {
+              submitOtpResponse && submitOtpResponse.error && <Alert message={submitOtpResponse.error} type={"error"}/>
+            }
+          </Form>
+        }
+      </Row>
+    </Card>
   )
 }
 
