@@ -16,17 +16,14 @@ const CodePreview = ({ children }) => (
 );
 
 const Settings = (props) => {
-    console.log('profile props', props);
-  const { user, loading } = props;
-  const { currentUser } = user;
+  const { currentUser, loading } = props;
   const [currUser, setCurrUser] = useState({})
   const onFinish = async user => {
     await updateProfile(user)
     const { dispatch } = props;
     if (dispatch) {
       await dispatch({
-        type: 'user/updateCurrent',
-        user: user,
+        type: 'user/fetchCurrent'
       });
     }
   };
@@ -37,8 +34,7 @@ const Settings = (props) => {
       primary_email: currentUser.primary_email,
     })
   })
-  console.log(currUser)
-  return (
+ return (
       <PageContainer>
         <Card>
           <Row
@@ -81,7 +77,7 @@ const Settings = (props) => {
   );
 };
 export default connect(({ user, loading }) => ({
-  user: user,
+  user: user.currentUser,
   loading: loading.models.user,
 }))(Settings);
 
