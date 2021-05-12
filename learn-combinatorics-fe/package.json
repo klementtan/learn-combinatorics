@@ -2,6 +2,7 @@
   "name": "learn-combinatorics",
   "version": "1.0.0",
   "private": true,
+  "homepage": "http://klementtan.github.io/learn-combinatorics",
   "description": "A platform to allow students to learn practice combinatorics.",
   "scripts": {
     "analyze": "cross-env ANALYZE=1 umi build",

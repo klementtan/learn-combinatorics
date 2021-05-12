@@ -23,12 +23,6 @@ export default [
             component: '../layouts/BasicLayout',
             authority: ['ADMIN', 'PUBLIC_USER'],
             routes: [
-                {
-                  path: "/profile",
-                  name: "Profile",
-                  icon: 'user',
-                  component: './UserProfile'
-              },
               {
                 path: '/',
                 redirect: '/dashboard',
@@ -38,6 +32,12 @@ export default [
                 name: 'dashboard',
                 icon: 'AreaChartOutlined',
                 component: './Dashboard'
+              },
+              {
+                path: "/profile",
+                name: "Profile",
+                icon: 'user',
+                component: './UserProfile'
               },
               {
                 path: '/admin',
