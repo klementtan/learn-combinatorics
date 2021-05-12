@@ -4,7 +4,7 @@ import defaultSettings from './defaultSettings';
 import proxy from './proxy';
 import routes from './routes';
 
-require('dotenv').config()
+require('dotenv').config();
 
 const { REACT_APP_ENV } = process.env;
 export default defineConfig({

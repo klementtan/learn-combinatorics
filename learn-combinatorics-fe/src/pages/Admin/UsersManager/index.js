@@ -44,7 +44,7 @@ const Users = () => {
       title: 'Name',
       dataIndex: 'name',
       render: (name, record) => {
-        return <Typography.Text >{name}</Typography.Text>;
+        return <Typography.Text>{name}</Typography.Text>;
       },
       filterIcon: filtered => (
         <SearchOutlined style={{ color: filtered ? '#1890ff' : undefined }} />

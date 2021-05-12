@@ -4,7 +4,6 @@ export async function fakeAccountLogin(params) {
   return request('/api/login/Profile', {
     method: 'POST',
     data: params,
-
   });
 }
 export async function getFakeCaptcha(mobile) {

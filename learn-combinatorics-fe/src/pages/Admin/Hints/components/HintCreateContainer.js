@@ -7,11 +7,7 @@ import {
   ArrowDownOutlined,
   WarningFilled,
 } from '@ant-design/icons';
-import {
-  createHint,
-  upsertHintVideo,
-  upsertHintPdf,
-} from '@/services/hints';
+import { createHint, upsertHintVideo, upsertHintPdf } from '@/services/hints';
 import AttemptStatusTag from '@/components/ProblemAttempt/AttemptStatusTag';
 import DoubtStatusTag from '@/components/Doubt/DoubtStatusTag';
 import ProblemDifficulty from '@/components/Problems/ProblemDifficulty';
@@ -91,12 +87,11 @@ const HintCreateContainer = props => {
         setErrorMessage(err.error);
       })
       .finally(async () => {
-          setLoading(false);
-          await dispatch({
-            type: 'hints/fetch',
-          })
-      }
-      );
+        setLoading(false);
+        await dispatch({
+          type: 'hints/fetch',
+        });
+      });
   };
 
   return (
@@ -104,10 +99,7 @@ const HintCreateContainer = props => {
       <HintCreate hint={hint} setHint={setHint} />
       <HintPdf hintPdf={hintPdf} setHintPdf={setHintPdf} />
 
-      <HintVideo
-        hintVideo={hintVideo}
-        setHintVideo={setHintVideo}
-      />
+      <HintVideo hintVideo={hintVideo} setHintVideo={setHintVideo} />
       <Row justify={'center'}>
         <Form
           style={{
@@ -128,9 +120,7 @@ const HintCreateContainer = props => {
               </Button>
               {createdId !== -1 && (
                 <Button
-                  onClick={() =>
-                    history.push(`/admin/hints?active_tab=2&hint_id=${createdId}`)
-                  }
+                  onClick={() => history.push(`/admin/hints?active_tab=2&hint_id=${createdId}`)}
                   style={{ marginLeft: '1em' }}
                 >
                   Edit Created Hint
@@ -154,6 +144,6 @@ const HintCreateContainer = props => {
   );
 };
 
-export default connect(({  loading }) => ({
+export default connect(({ loading }) => ({
   loading: loading.models.problems,
 }))(HintCreateContainer);

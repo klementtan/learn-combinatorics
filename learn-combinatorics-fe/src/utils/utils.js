@@ -21,14 +21,14 @@ export const isAntDesignProOrDev = () => {
   return isAntDesignPro();
 };
 
-export const isValidFile = (file) => {
+export const isValidFile = file => {
   if (file instanceof File) {
-    return true
+    return true;
   }
 
-  if (typeof file === 'string' && file.includes("http")) {
-    return true
+  if (typeof file === 'string' && file.includes('http')) {
+    return true;
   }
-  return false
-}
+  return false;
+};
 export const getPageQuery = () => parse(window.location.href.split('?')[1]);

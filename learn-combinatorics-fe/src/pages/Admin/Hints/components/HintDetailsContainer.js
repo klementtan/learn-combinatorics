@@ -34,8 +34,8 @@ import { ACCESS_LEVELS } from '@/components/Users/UsersAccessLevel';
 import HintPdf from '@/pages/Admin/Hints/components/HintPdf';
 import Divider from 'antd/es/divider';
 import { getHint } from '@/services/hints';
-import {isValidFile} from "@/utils/utils";
-import HintVideo from "@/pages/Admin/Hints/components/HintVideo";
+import { isValidFile } from '@/utils/utils';
+import HintVideo from '@/pages/Admin/Hints/components/HintVideo';
 
 const HintDetailsContainer = props => {
   const [success, setSuccess] = useState(false);
@@ -118,7 +118,7 @@ const HintDetailsContainer = props => {
     setErrorMessage('');
     setSuccess(false);
     setLoading(true);
-    updateHint(params.hint_id,hint)
+    updateHint(params.hint_id, hint)
       .then(async hintResp => {
         const createdHint = hintResp.hint;
         const hintId = createdHint.id;
@@ -127,7 +127,7 @@ const HintDetailsContainer = props => {
           await upsertHintPdf(hintId, hintPdf);
         }
         if (hintVideo instanceof File) {
-          await upsertHintVideo(hintId, hintVideo)
+          await upsertHintVideo(hintId, hintVideo);
         }
 
         setSuccess(true);
@@ -149,7 +149,7 @@ const HintDetailsContainer = props => {
             type: 'hints/fetch',
           });
         }
-        setLoading(false)
+        setLoading(false);
       });
   };
 
@@ -179,15 +179,12 @@ const HintDetailsContainer = props => {
         <>
           <HintCreate hint={hint} setHint={setHint} />
           <HintPdf hintPdf={hintPdf} setHintPdf={setHintPdf} />
-          <HintVideo
-            hintVideo={hintVideo}
-            setHintVideo={setHintVideo}
-          />
+          <HintVideo hintVideo={hintVideo} setHintVideo={setHintVideo} />
           <Row justify={'center'}>
             <Form
               style={{
                 width: '75%',
-                marginTop: "1em"
+                marginTop: '1em',
               }}
               name="basic"
               onFinish={onFinish}
@@ -206,7 +203,9 @@ const HintDetailsContainer = props => {
               </Form.Item>
               <Form.Item>
                 {success && <Tag color={'green'}>Success</Tag>}
-                {errorMessage && errorMessage?.length !== 0 && <Tag color={'orange'}>{errorMessage}</Tag>}
+                {errorMessage && errorMessage?.length !== 0 && (
+                  <Tag color={'orange'}>{errorMessage}</Tag>
+                )}
                 {validationErrors.map((err, idx) => (
                   <Tag color={'orange'} key={idx} style={{ margin: '0.5em' }}>
                     {err}

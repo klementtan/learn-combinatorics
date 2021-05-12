@@ -31,13 +31,13 @@ export default [
                 path: '/dashboard',
                 name: 'dashboard',
                 icon: 'AreaChartOutlined',
-                component: './Dashboard'
+                component: './Dashboard',
               },
               {
-                path: "/profile",
-                name: "Profile",
+                path: '/profile',
+                name: 'Profile',
                 icon: 'user',
-                component: './UserProfile'
+                component: './UserProfile',
               },
               {
                 path: '/admin',

@@ -5,7 +5,7 @@ import AttemptList from './components/AttemptList';
 import ChapterCreate from '@/pages/Admin/Chapters/components/ChapterCreate';
 import qs from 'qs';
 import ChapterDetails from '@/pages/Admin/Chapters/components/ChapterDetails';
-import ViewAttempt from "@/pages/Admin/Attempts/components/ViewAttempt";
+import ViewAttempt from '@/pages/Admin/Attempts/components/ViewAttempt';
 
 const Attempt = props => {
   const getChapters = async () => {
@@ -23,10 +23,7 @@ const Attempt = props => {
 
   const activeTab = queryParam['active_tab'] || 0;
 
-  const components = [
-    <AttemptList />,
-    <ViewAttempt/>
-  ];
+  const components = [<AttemptList />, <ViewAttempt />];
   return (
     <PageContainer
       tabList={[

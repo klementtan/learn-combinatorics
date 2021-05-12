@@ -32,7 +32,7 @@ const errorHandler = error => {
   if (response && response.status) {
     const errorText = codeMessage[response.status] || response.statusText;
     const { status, url } = response;
-    if (status === 403 && error.data.error_code === "GOOGLE_403") {
+    if (status === 403 && error.data.error_code === 'GOOGLE_403') {
       window.location.reload();
     }
     notification.error({
@@ -42,7 +42,8 @@ const errorHandler = error => {
   } else if (!response) {
     notification.error({
       description: 'Unexpected error.',
-      message: 'Please report the error to https://github.com/klementtan/learn-combinatorics/issues',
+      message:
+        'Please report the error to https://github.com/klementtan/learn-combinatorics/issues',
     });
   }
   throw error.data;
@@ -51,7 +52,7 @@ const errorHandler = error => {
  * 配置request请求时的默认参数
  */
 const request = extend({
-  errorHandler
+  errorHandler,
   // 默认错误处理
 });
 

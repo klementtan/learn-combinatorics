@@ -17,11 +17,10 @@ import InputNumber from 'antd/es/input-number';
 import Collapse from 'antd/es/collapse';
 import { BigPlayButton, ControlBar, Player } from 'video-react';
 import 'video-react/dist/video-react.css';
-import {isValidFile} from "@/utils/utils"; // import css
+import { isValidFile } from '@/utils/utils'; // import css
 
 const HintVideo = props => {
   const { hintVideo, setHintVideo } = props;
-
 
   const onUploadHintVideoChange = async e => {
     await setHintVideo(e.target.files[0]);
@@ -48,18 +47,12 @@ const HintVideo = props => {
               }}
             />
           </Form.Item>
-          <Collapse
-            collapsible={isValidFile(hintVideo) ? '' : 'disabled'}
-          >
+          <Collapse collapsible={isValidFile(hintVideo) ? '' : 'disabled'}>
             <Collapse.Panel header="Hint Video" key="1">
               {isValidFile(hintVideo) && (
                 <Player
                   fluid
-                  src={
-                    hintVideo instanceof File
-                      ? URL.createObjectURL(hintVideo)
-                      : hintVideo
-                  }
+                  src={hintVideo instanceof File ? URL.createObjectURL(hintVideo) : hintVideo}
                 >
                   <ControlBar autoHide={false} />
                   <BigPlayButton position="center" />

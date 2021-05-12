@@ -4,7 +4,7 @@ import PageContainer from '@ant-design/pro-layout/es/components/PageContainer';
 import HintList from './components/HintList';
 import HintCreate from '@/pages/Admin/Hints/components/HintCreateContainer';
 import qs from 'qs';
-import HintDetailsContainer from "@/pages/Admin/Hints/components/HintDetailsContainer";
+import HintDetailsContainer from '@/pages/Admin/Hints/components/HintDetailsContainer';
 
 const Hints = props => {
   const getHints = async () => {
@@ -25,11 +25,7 @@ const Hints = props => {
 
   const activeTab = queryParam['active_tab'] || 0;
 
-  const components = [
-    <HintList />,
-    <HintCreate/> ,
-    <HintDetailsContainer/> ,
-  ];
+  const components = [<HintList />, <HintCreate />, <HintDetailsContainer />];
   return (
     <PageContainer
       tabList={[

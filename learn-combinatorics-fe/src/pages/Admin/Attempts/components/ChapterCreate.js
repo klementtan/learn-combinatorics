@@ -32,7 +32,6 @@ const ChapterCreate = props => {
       .catch(err => setErrorMessage(err.error));
   };
 
-
   return (
     <Row justify={'center'}>
       <Form

@@ -25,7 +25,7 @@ import Select from 'antd/es/select';
 import { UserAccessLevelTag, ACCESS_LEVELS, tagNames } from '@/components/Users/UsersAccessLevel';
 import { parseKatex } from '@/utils/Katex';
 import Pdf from '@/components/Pdf';
-import {isValidFile} from "@/utils/utils";
+import { isValidFile } from '@/utils/utils';
 
 const ProblemCreatePdf = props => {
   const { problemPdf, setProblemPdf } = props;
@@ -48,7 +48,7 @@ const ProblemCreatePdf = props => {
             style={{
               marginTop: '1em',
             }}
-            collapsible={isValidFile(problemPdf)? '' : 'disabled'}
+            collapsible={isValidFile(problemPdf) ? '' : 'disabled'}
           >
             <Collapse.Panel header="View PDF" key="1">
               <Pdf pdf={problemPdf} />

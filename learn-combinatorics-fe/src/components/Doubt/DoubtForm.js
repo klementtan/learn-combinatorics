@@ -56,7 +56,7 @@ const DoubtForm = props => {
     <Card title={'Submit Doubt'}>
       <Form onValuesChange={formChange}>
         <Form.Item name={'title'} label={'Title'}>
-          <Input disabled={props.user.id !== props.attempt.user.id}/>
+          <Input disabled={props.user.id !== props.attempt.user.id} />
         </Form.Item>
         <Form.Item name={'body'} label={'Doubt'}>
           {previewMode ? (
@@ -67,13 +67,10 @@ const DoubtForm = props => {
               })}{' '}
             </Form.Item>
           ) : (
-            <Input.TextArea
-              disabled={props.user.id !== props.attempt.user.id}
-              rows={4} />
+            <Input.TextArea disabled={props.user.id !== props.attempt.user.id} rows={4} />
           )}
         </Form.Item>
-        <Form.Item
-        >
+        <Form.Item>
           <Button
             style={{
               margin: '1em',

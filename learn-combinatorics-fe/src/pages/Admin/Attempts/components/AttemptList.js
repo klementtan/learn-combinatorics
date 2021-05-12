@@ -6,24 +6,26 @@ import {
   ArrowDownOutlined,
   EnterOutlined,
   SettingOutlined,
-
 } from '@ant-design/icons';
 import { connect, useLocation, history } from 'umi';
 import qs from 'qs';
 import { deleteChapter, updatePosition } from '@/services/chapters';
-import {ACCESS_LEVELS, tagNames, UserAccessLevelTag} from "@/components/Users/UsersAccessLevel";
-import {getAllAttemptAdmin} from "@/services/attempt";
-import {PROBLEM_DIFFICULTY_MAP, ProblemDifficultyTag} from "@/components/Problems/ProblemDifficulty";
-import AttemptStatusTag from "@/components/ProblemAttempt/AttemptStatusTag";
-import moment from "moment";
-import DoubtStatusTag from "@/components/Doubt/DoubtStatusTag";
+import { ACCESS_LEVELS, tagNames, UserAccessLevelTag } from '@/components/Users/UsersAccessLevel';
+import { getAllAttemptAdmin } from '@/services/attempt';
+import {
+  PROBLEM_DIFFICULTY_MAP,
+  ProblemDifficultyTag,
+} from '@/components/Problems/ProblemDifficulty';
+import AttemptStatusTag from '@/components/ProblemAttempt/AttemptStatusTag';
+import moment from 'moment';
+import DoubtStatusTag from '@/components/Doubt/DoubtStatusTag';
 const AttemptList = props => {
   const [search, setSearch] = useState({
     searchText: '',
     searchedColumn: '',
   });
-  const [attempts, setAttempts] = useState()
-  const [success, setSuccess] = useState(-1)
+  const [attempts, setAttempts] = useState();
+  const [success, setSuccess] = useState(-1);
   const callUpdatePosition = async (chapterId, delta) => {
     updatePosition(chapterId, delta).then(resp => {
       const { dispatch } = props;
@@ -35,11 +37,13 @@ const AttemptList = props => {
     });
   };
   useEffect(() => {
-   getAllAttemptAdmin().then(resp => {
-     setSuccess(1)
-     setAttempts(resp.attempts)
-   }).catch(err => setSuccess(0))
-  }, [])
+    getAllAttemptAdmin()
+      .then(resp => {
+        setSuccess(1);
+        setAttempts(resp.attempts);
+      })
+      .catch(err => setSuccess(0));
+  }, []);
 
   const callDeleteChapter = async chapterId => {
     deleteChapter(chapterId).then(resp => {
@@ -78,7 +82,6 @@ const AttemptList = props => {
     return ret;
   };
 
-
   const handleReset = clearFilters => {
     clearFilters();
     setSearch({ searchText: '' });
@@ -89,9 +92,11 @@ const AttemptList = props => {
       dataIndex: 'user',
       width: '20%',
       render: (user, idx) => {
-        let email = user.nus_email ? user.nus_email : user.primary_email
+        let email = user.nus_email ? user.nus_email : user.primary_email;
         return (
-          <Typography.Text key={`user_id=${user.id}`}>{user.name}({email})</Typography.Text>
+          <Typography.Text key={`user_id=${user.id}`}>
+            {user.name}({email})
+          </Typography.Text>
         );
       },
       filterIcon: filtered => (
@@ -135,16 +140,16 @@ const AttemptList = props => {
       dataIndex: 'user',
       width: '10%',
       render: (user, idx) => {
-        const roles = user['roles']
+        const roles = user['roles'];
         return (
           <Row gutter={[5, 5]}>
-            {
-              roles.map((role, idx) => {
-                return <Col
-                  key={`user_id=${user.id},role=${role.name}`}
-                ><UserAccessLevelTag style={{margin: "1em"}} role={role.name} /></Col>
-              })
-            }
+            {roles.map((role, idx) => {
+              return (
+                <Col key={`user_id=${user.id},role=${role.name}`}>
+                  <UserAccessLevelTag style={{ margin: '1em' }} role={role.name} />
+                </Col>
+              );
+            })}
           </Row>
         );
       },
@@ -152,28 +157,28 @@ const AttemptList = props => {
         <SearchOutlined style={{ color: filtered ? '#1890ff' : undefined }} />
       ),
       onFilter: (value, record) => {
-        const simple_roles = record?.user?.roles.map(role => role.name)
-        if (simple_roles?.includes(value) ) {
-          return true
+        const simple_roles = record?.user?.roles.map(role => role.name);
+        if (simple_roles?.includes(value)) {
+          return true;
         }
       },
       filters: [
         {
           text: tagNames[ACCESS_LEVELS.PUBLIC_USER],
-          value: ACCESS_LEVELS.PUBLIC_USER
+          value: ACCESS_LEVELS.PUBLIC_USER,
         },
         {
           text: tagNames[ACCESS_LEVELS.NUS_USER],
-          value: ACCESS_LEVELS.NUS_USER
+          value: ACCESS_LEVELS.NUS_USER,
         },
         {
           text: tagNames[ACCESS_LEVELS.MOD_USER],
-          value: ACCESS_LEVELS.MOD_USER
+          value: ACCESS_LEVELS.MOD_USER,
         },
         {
           text: tagNames[ACCESS_LEVELS.ADMIN],
-          value: ACCESS_LEVELS.ADMIN
-        }
+          value: ACCESS_LEVELS.ADMIN,
+        },
       ],
     },
     {
@@ -182,9 +187,9 @@ const AttemptList = props => {
       render: (problem, idx) => {
         return (
           <Row key={idx}>
-              <a href={`#/admin/problems?active_tab=2&problem_id=${problem?.id}`}>
-                {problem?.title}{' '}
-              </a>
+            <a href={`#/admin/problems?active_tab=2&problem_id=${problem?.id}`}>
+              {problem?.title}{' '}
+            </a>
           </Row>
         );
       },
@@ -193,7 +198,8 @@ const AttemptList = props => {
       ),
       onFilter: (value, record) => {
         const problem = record['problem'];
-        const serializedProblem = `problem_id=${problem.id},` + problem.title?.toString().toLowerCase();
+        const serializedProblem =
+          `problem_id=${problem.id},` + problem.title?.toString().toLowerCase();
 
         return serializedProblem.includes(value.toLowerCase());
       },
@@ -230,11 +236,11 @@ const AttemptList = props => {
       filters: [
         {
           text: 'No Submissions',
-          value: 'no_submissions'
+          value: 'no_submissions',
         },
         {
           text: 'Pass',
-          value: 'pass'
+          value: 'pass',
         },
         {
           text: 'In Progress',
@@ -242,104 +248,104 @@ const AttemptList = props => {
         },
         {
           text: 'Skipped',
-          value: 'skipped'
-        }
+          value: 'skipped',
+        },
       ],
       onFilter: (value, record) => {
-        return record.status && value === record.status && true
+        return record.status && value === record.status && true;
       },
       render: (attempt, idx) => {
-        if (attempt.status){
-          return <AttemptStatusTag key={idx + "_tag"} status={attempt.status}/>
+        if (attempt.status) {
+          return <AttemptStatusTag key={idx + '_tag'} status={attempt.status} />;
         } else {
-          return <AttemptStatusTag key={idx+ "_tag"} status={"no_submissions"}/>
+          return <AttemptStatusTag key={idx + '_tag'} status={'no_submissions'} />;
         }
-      }
+      },
     },
     {
       title: 'Doubt',
-      width:'5%',
+      width: '5%',
       filters: [
         {
           text: 'Pending',
-          value: 'pending'
+          value: 'pending',
         },
         {
           text: 'Resolved',
-          value: 'resolved'
-        }
+          value: 'resolved',
+        },
       ],
       onFilter: (value, attempt) => {
-        const doubt_thread = attempt.doubt_thread
+        const doubt_thread = attempt.doubt_thread;
         if (!doubt_thread) {
-          return null
+          return null;
         }
-        return doubt_thread.status === value
+        return doubt_thread.status === value;
       },
       render: (attempt, idx) => {
-
-        const doubt_thread = attempt.doubt_thread
+        const doubt_thread = attempt.doubt_thread;
         if (!doubt_thread) {
-          return null
+          return null;
         }
-        return (
-          <DoubtStatusTag
-            key={attempt.id + "_attempt"}
-            status={doubt_thread.status}
-          />
-        )
-      }
+        return <DoubtStatusTag key={attempt.id + '_attempt'} status={doubt_thread.status} />;
+      },
     },
     {
       title: 'New Reply',
-      width:'5%',
+      width: '5%',
       filters: [
         {
           text: 'Yes',
-          value: true
-        }
+          value: true,
+        },
       ],
       onFilter: (value, attempt) => {
-        const doubt_thread = attempt.doubt_thread
-        if (!doubt_thread) return false
-        if (doubt_thread?.status === 'resolved') return false
-        const doubt_replies = doubt_thread?.doubt_replies
+        const doubt_thread = attempt.doubt_thread;
+        if (!doubt_thread) return false;
+        if (doubt_thread?.status === 'resolved') return false;
+        const doubt_replies = doubt_thread?.doubt_replies;
         if (!doubt_replies || doubt_replies.length === 0) {
-          return false
+          return false;
         }
-        const latestUserRoles = doubt_replies[0]?.user.roles.map(role => role.name)
+        const latestUserRoles = doubt_replies[0]?.user.roles.map(role => role.name);
         if (latestUserRoles?.includes(ACCESS_LEVELS.ADMIN)) {
-          return false
+          return false;
         }
-        return true
+        return true;
       },
       render: (attempt, idx) => {
-
-        const doubt_thread = attempt.doubt_thread
-        if (!doubt_thread) return
-        if (doubt_thread?.status === 'resolved') return
-        const doubt_replies = doubt_thread?.doubt_replies
+        const doubt_thread = attempt.doubt_thread;
+        if (!doubt_thread) return;
+        if (doubt_thread?.status === 'resolved') return;
+        const doubt_replies = doubt_thread?.doubt_replies;
         if (!doubt_replies || doubt_replies.length === 0) {
-          return
+          return;
         }
-        const latestUserRoles = doubt_replies[0]?.user.roles.map(role => role.name)
+        const latestUserRoles = doubt_replies[0]?.user.roles.map(role => role.name);
         if (latestUserRoles?.includes(ACCESS_LEVELS.ADMIN)) {
-          return
+          return;
         }
-        return <Tag
-          key={idx}
-          color={"green"}
-        >
-          Yes
-        </Tag>
-      }
+        return (
+          <Tag key={idx} color={'green'}>
+            Yes
+          </Tag>
+        );
+      },
     },
     {
       title: 'Time Spent',
       width: '10%',
       render: (attempt, idx) => {
-          return <Typography.Text> {moment.duration(attempt.attempt_time, 'seconds').locale('en').humanize() }</Typography.Text>
-      }
+        return (
+          <Typography.Text>
+            {' '}
+            {moment
+              .duration(attempt.attempt_time, 'seconds')
+              .locale('en')
+              .humanize()}
+          </Typography.Text>
+        );
+      },
     },
     {
       title: 'Actions',
@@ -373,4 +379,4 @@ const AttemptList = props => {
   );
 };
 
-export default AttemptList
+export default AttemptList;

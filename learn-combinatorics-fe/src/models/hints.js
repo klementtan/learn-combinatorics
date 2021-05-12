@@ -1,4 +1,4 @@
-import {getAllHints} from "@/services/hints";
+import { getAllHints } from '@/services/hints';
 
 const HintModel = {
   namespace: 'hints',

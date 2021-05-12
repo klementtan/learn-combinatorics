@@ -29,9 +29,10 @@ export function getAuthority(str) {
 }
 export function setAuthority(roles) {
   let proAuthority = [];
-  roles && roles.forEach(role => {
-    proAuthority.push(role.name);
-  });
+  roles &&
+    roles.forEach(role => {
+      proAuthority.push(role.name);
+    });
   localStorage.setItem('learn-combinatorics-authority', JSON.stringify(proAuthority)); // auto reload
 
   reloadAuthorized();

@@ -14,7 +14,7 @@ import {
 import React, { useState, useRef, useEffect } from 'react';
 import { connect, history, Redirect } from 'umi';
 import Pdf from '@/components/Pdf';
-import {isValidFile} from "@/utils/utils";
+import { isValidFile } from '@/utils/utils';
 
 const HintPdf = props => {
   const { hintPdf, setHintPdf } = props;
@@ -27,7 +27,7 @@ const HintPdf = props => {
         <Form
           style={{
             width: '75%',
-            marginBottom: "1em"
+            marginBottom: '1em',
           }}
           name="basic"
         >
@@ -38,7 +38,7 @@ const HintPdf = props => {
             style={{
               marginTop: '1em',
             }}
-            collapsible={ isValidFile(hintPdf) ? '' : 'disabled'}
+            collapsible={isValidFile(hintPdf) ? '' : 'disabled'}
           >
             <Collapse.Panel header="View PDF" key="1">
               <Pdf pdf={hintPdf} />

@@ -22,7 +22,9 @@ import {
 import {
   createAnswer,
   createProblem,
-  getAllProblems, updateAnswer, updateProblem,
+  getAllProblems,
+  updateAnswer,
+  updateProblem,
   upsertExplanationBodyPdf,
   upsertExplanationVideo,
   upsertProblemPdf,
@@ -43,7 +45,7 @@ import ProblemDisplay from '@/components/ProblemAttempt/ProblemDisplay';
 import AnswerExplanationPdf from '@/pages/Admin/Problems/components/AnswerExplanationPdf';
 import Tooltip from 'antd/es/tooltip';
 import { getProblem } from '@/services/problem';
-import {isValidFile} from "@/utils/utils";
+import { isValidFile } from '@/utils/utils';
 
 const ProblemCreateContainer = props => {
   const [success, setSuccess] = useState(false);
@@ -166,7 +168,7 @@ const ProblemCreateContainer = props => {
     setSuccess(false);
     setLoading(true);
     setCreatedId(-1);
-    updateProblem(params.problem_id,problem)
+    updateProblem(params.problem_id, problem)
       .then(async problemResp => {
         const createdProblem = problemResp.problem;
         const problemId = createdProblem.id;
@@ -184,7 +186,7 @@ const ProblemCreateContainer = props => {
             await upsertExplanationVideo(answerId, explanationVideo);
           }
 
-          if (explanationPdf instanceof  File) {
+          if (explanationPdf instanceof File) {
             await upsertExplanationBodyPdf(answerId, explanationPdf);
           }
         });

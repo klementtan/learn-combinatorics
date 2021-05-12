@@ -17,7 +17,7 @@ import InputNumber from 'antd/es/input-number';
 import Collapse from 'antd/es/collapse';
 import { BigPlayButton, ControlBar, Player } from 'video-react';
 import 'video-react/dist/video-react.css';
-import {isValidFile} from "@/utils/utils";
+import { isValidFile } from '@/utils/utils';
 
 const AnswerExplanationVideo = props => {
   const { explanationVideo, setExplanationVideo } = props;
@@ -26,7 +26,6 @@ const AnswerExplanationVideo = props => {
   const [errorMessage, setErrorMessage] = useState('');
   const [isFraction, setIsFraction] = useState(true);
   const [previewMode, setPreviewMode] = useState(false);
-
 
   const onUploadExplanationVideoChange = async e => {
     await setExplanationVideo(e.target.files[0]);
@@ -53,11 +52,9 @@ const AnswerExplanationVideo = props => {
               }}
             />
           </Form.Item>
-          <Collapse
-            collapsible={isValidFile(explanationVideo) ? '' : 'disabled'}
-          >
+          <Collapse collapsible={isValidFile(explanationVideo) ? '' : 'disabled'}>
             <Collapse.Panel header="Explanation Video" key="1">
-              {isValidFile(explanationVideo)&& (
+              {isValidFile(explanationVideo) && (
                 <Player
                   fluid
                   src={

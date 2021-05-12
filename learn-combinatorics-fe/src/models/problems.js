@@ -16,7 +16,7 @@ const ProblemModel = {
         type: 'saveProblems',
         payload: [],
       });
-    }
+    },
   },
   reducers: {
     saveProblems(state, action) {

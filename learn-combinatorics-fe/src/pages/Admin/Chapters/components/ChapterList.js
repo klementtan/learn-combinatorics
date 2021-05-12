@@ -65,7 +65,6 @@ const ChapterList = props => {
     return ret;
   };
 
-
   const handleReset = clearFilters => {
     clearFilters();
     setSearch({ searchText: '' });

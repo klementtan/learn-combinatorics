@@ -1,6 +1,5 @@
 export default {
-  'pages.layouts.userLayout.title':
-    'Learn Combinatorics',
+  'pages.layouts.userLayout.title': 'Learn Combinatorics',
   'pages.login.accountLogin.tab': 'Login dengan akun',
   'pages.login.accountLogin.errorMessage': 'Nama pengguna dan kata sandi salah（admin/ant.design)',
   'pages.login.username.placeholder': 'nama pengguna: admin atau user',

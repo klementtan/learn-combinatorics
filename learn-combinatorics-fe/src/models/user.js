@@ -32,7 +32,6 @@ const UserModel = {
       });
     },
     *reset(_, { call, put }) {
-
       yield put({
         type: 'saveCurrentUser',
         payload: {},

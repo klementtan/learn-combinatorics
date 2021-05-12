@@ -1,49 +1,46 @@
-import {connect} from "umi";
-import {PageContainer} from "@ant-design/pro-layout";
-import React from "react";
-import { Card, Row, Col ,Avatar, Button, Form, Input, Divider } from 'antd';
-import AvatarUploader from "./components/AvatarUploader";
-import NusEmailVerification from "./components/NusEmailVerification";
+import { connect } from 'umi';
+import { PageContainer } from '@ant-design/pro-layout';
+import React from 'react';
+import { Card, Row, Col, Avatar, Button, Form, Input, Divider } from 'antd';
+import AvatarUploader from './components/AvatarUploader';
+import NusEmailVerification from './components/NusEmailVerification';
 
-const Profile = (props) => {
-  console.log("profile props", props)
-  const { user, loading} = props
-  const { currentUser } = user
-  const onFinish = async (user) => {
-    const {dispatch} = props
+const Profile = props => {
+  console.log('profile props', props);
+  const { user, loading } = props;
+  const { currentUser } = user;
+  const onFinish = async user => {
+    const { dispatch } = props;
     if (dispatch) {
       await dispatch({
         type: 'user/updateCurrent',
-        user: user
+        user: user,
       });
     }
-  }
-  const onFinishFailed = (values) => {
-  }
-  return(
-    <div
-      key={"user_profile"}
-    >
+  };
+  const onFinishFailed = values => {};
+  return (
+    <div key={'user_profile'}>
       <Card>
-        <Row
-          justify={"center"}
-        >
+        <Row justify={'center'}>
           <Col>
-            <AvatarUploader
-              avatarUrl={currentUser.avatar_url}
-            />
+            <AvatarUploader avatarUrl={currentUser.avatar_url} />
           </Col>
         </Row>
         <Row
           style={{
-            marginTop:"1em"
+            marginTop: '1em',
           }}
-          justify={"center"}
+          justify={'center'}
         >
           <Col>
             <Form
               name="basic"
-              initialValues={{ name: currentUser.name, primary_email: currentUser.primary_email, nus_email:currentUser.nus_email }}
+              initialValues={{
+                name: currentUser.name,
+                primary_email: currentUser.primary_email,
+                nus_email: currentUser.nus_email,
+              }}
               onFinish={onFinish}
               onFinishFailed={onFinishFailed}
             >
@@ -55,31 +52,25 @@ const Profile = (props) => {
                 <Input />
               </Form.Item>
 
-              <Form.Item
-                label="Primary Email"
-                name="primary_email"
-              >
-                <Input
-                  disabled
-                />
+              <Form.Item label="Primary Email" name="primary_email">
+                <Input disabled />
               </Form.Item>
-              <Form.Item >
+              <Form.Item>
                 <Button type="primary" htmlType="submit" loading={loading}>
-                 Save
+                  Save
                 </Button>
               </Form.Item>
             </Form>
             <Divider plain>Verify NUS email</Divider>
-              <NusEmailVerification/>
+            <NusEmailVerification />
           </Col>
         </Row>
       </Card>
     </div>
-  )
-}
+  );
+};
 
 export default connect(({ user, loading }) => ({
   user: user,
   loading: loading.models.user,
 }))(Profile);
-

@@ -31,7 +31,7 @@ import AnswerExplanationVideo from '@/pages/Admin/Problems/components/AnswerExpl
 import ProblemDisplay from '@/components/ProblemAttempt/ProblemDisplay';
 import AnswerExplanationPdf from '@/pages/Admin/Problems/components/AnswerExplanationPdf';
 import Tooltip from 'antd/es/tooltip';
-import {isValidFile} from "@/utils/utils";
+import { isValidFile } from '@/utils/utils';
 
 const ProblemCreateContainer = props => {
   const [success, setSuccess] = useState(false);

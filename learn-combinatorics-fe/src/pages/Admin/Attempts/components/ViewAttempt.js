@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import {connect, useIntl, useLocation, history} from 'umi';
+import { connect, useIntl, useLocation, history } from 'umi';
 import PageContainer from '@ant-design/pro-layout/es/components/PageContainer';
 import ProblemDisplay from '@/components/ProblemAttempt/ProblemDisplay';
 import AnswerSubmission from '@/components/ProblemAttempt/AnswerSubmission';
@@ -10,7 +10,7 @@ import StatusTag from '@/components/ProblemAttempt/StatusTag';
 import HintsAndSolution from '@/components/ProblemAttempt/HintsAndSolution/HintsAndSolution';
 import moment from 'moment';
 import DoubtThread from '@/components/Doubt';
-import qs from "qs";
+import qs from 'qs';
 import { notification } from 'antd';
 
 const ViewAttempt = props => {
@@ -29,9 +29,9 @@ const ViewAttempt = props => {
     if (!params.attempt_id) {
       notification.error({
         message: `Invalid request`,
-        description: "Please select a valid attempt",
+        description: 'Please select a valid attempt',
       });
-      history.push("/admin/attempts")
+      history.push('/admin/attempts');
     }
     await getProblemAttempt(params.attempt_id);
   }, []);

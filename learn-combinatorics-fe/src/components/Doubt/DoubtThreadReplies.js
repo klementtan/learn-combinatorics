@@ -56,7 +56,7 @@ const DoubtThreadReplies = props => {
       });
     });
   };
-  moment.locale('en')
+  moment.locale('en');
   return (
     <Card
       type="inner"

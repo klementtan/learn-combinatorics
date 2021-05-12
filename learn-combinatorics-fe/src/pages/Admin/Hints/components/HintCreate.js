@@ -25,7 +25,6 @@ const HintCreate = props => {
   };
   const [previewMode, setPreviewMode] = useState(false);
 
-
   useEffect(() => {
     if (hint.problem_id === setSelectedProblem.id) return;
     problems.forEach(problem => {
@@ -69,9 +68,7 @@ const HintCreate = props => {
             rules={[{ required: true, message: 'Please input title of hint' }]}
           >
             <Input
-              onChange={e =>
-                setHint({ ...hint, hint: { ...hint.hint, title: e.target.value } })
-              }
+              onChange={e => setHint({ ...hint, hint: { ...hint.hint, title: e.target.value } })}
               placeholder="Problem Title"
               value={hint?.hint?.title}
             />

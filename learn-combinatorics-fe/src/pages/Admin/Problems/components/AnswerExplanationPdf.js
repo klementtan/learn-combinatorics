@@ -25,7 +25,7 @@ import Select from 'antd/es/select';
 import { UserAccessLevelTag, ACCESS_LEVELS, tagNames } from '@/components/Users/UsersAccessLevel';
 import { parseKatex } from '@/utils/Katex';
 import Pdf from '@/components/Pdf';
-import {isValidFile} from "@/utils/utils";
+import { isValidFile } from '@/utils/utils';
 
 const AnswerExplanationPdf = props => {
   const { explanationPdf, setExplanationPdf } = props;

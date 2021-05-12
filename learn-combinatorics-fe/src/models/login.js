@@ -25,10 +25,10 @@ const Model = {
         type: 'changeGoogleAuth',
         payload: '',
       });
-        history.replace({
-          pathname: '/user/login',
-        });
-        localStorage.setItem('learn-combinatorics-token', '');
+      history.replace({
+        pathname: '/user/login',
+      });
+      localStorage.setItem('learn-combinatorics-token', '');
     },
   },
   reducers: {

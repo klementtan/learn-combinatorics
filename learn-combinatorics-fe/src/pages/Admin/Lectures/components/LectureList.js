@@ -65,7 +65,6 @@ const LectureList = props => {
     return ret;
   };
 
-
   const handleReset = clearFilters => {
     clearFilters();
     setSearch({ searchText: '' });

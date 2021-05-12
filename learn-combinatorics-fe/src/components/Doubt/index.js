@@ -8,7 +8,7 @@ import { connect } from 'umi';
 const DoubtThread = props => {
   const { attempt } = props;
   const doubtThread = attempt.doubt_thread;
-  useEffect(() => {}, [attempt])
+  useEffect(() => {}, [attempt]);
   return (
     <Card
       loading={props.loading}

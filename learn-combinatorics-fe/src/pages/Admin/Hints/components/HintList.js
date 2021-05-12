@@ -17,7 +17,7 @@ import {
 } from '@/components/Problems/ProblemDifficulty';
 
 const HintList = props => {
-  const { problems, hints} = props;
+  const { problems, hints } = props;
   const [search, setSearch] = useState({
     searchText: '',
     searchedColumn: '',
@@ -69,7 +69,6 @@ const HintList = props => {
     }
     return ret;
   };
-
 
   const handleReset = clearFilters => {
     clearFilters();
@@ -204,8 +203,7 @@ const HintList = props => {
 
         const isFirst = idx === 0 || hints[idx - 1]?.problem?.id !== hints[idx]?.problem?.id;
         const isLast =
-          idx === hints.length - 1 ||
-          hints[idx + 1]?.problem?.id !== hints[idx]?.problem?.id;
+          idx === hints.length - 1 || hints[idx + 1]?.problem?.id !== hints[idx]?.problem?.id;
 
         return (
           <Row>
