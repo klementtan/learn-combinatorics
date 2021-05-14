@@ -133,8 +133,8 @@ const AnswerSubmissionModal = props => {
             <Typography.Text strong>Status: </Typography.Text>
             {
               {
-                pass: <Tag color={'green'}>Pass</Tag>,
-                fail: <Tag color={'red'}>Fail</Tag>,
+                pass: <Tag color={'green'}>Correct</Tag>,
+                fail: <Tag color={'red'}>Wrong</Tag>,
               }[state.status]
             }
           </Typography.Paragraph>

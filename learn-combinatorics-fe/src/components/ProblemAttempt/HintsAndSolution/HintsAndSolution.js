@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react';
-import { Typography, Breadcrumb, Menu, Table, Tag, Card, Button, Collapse } from 'antd';
+import {Typography, Breadcrumb, Menu, Table, Tag, Card, Button, Collapse, Col} from 'antd';
 import { LockTwoTone, UnlockTwoTone } from '@ant-design/icons';
 import { unlockAttemptHint, unlockAttemptAnswer } from '@/services/attempt';
 import { Player, ControlBar, BigPlayButton } from 'video-react';
@@ -85,6 +85,14 @@ const HintsAndSolution = props => {
                 }
               >
                 {hint.hint_video_url && (
+                  <>
+                  <Divider
+                    orientation="left"
+                    style={{
+                      marginTop: '1em',
+                    }}
+                  > Hint Video
+                  </Divider>
                   <Player
                     fluid
                     src={hint.hint_video_url}
@@ -95,17 +103,35 @@ const HintsAndSolution = props => {
                     <ControlBar autoHide={false} />
                     <BigPlayButton position="center" />
                   </Player>
+                  </>
                 )}
 
                 {hint.hint_body_pdf_url && (
+                  <>
+                    <Divider
+                      orientation="left"
+                      style={{
+                        marginTop: '1em',
+                      }}
+                    >Hint PDF
+                    </Divider>
                   <PdfViewer
                     style={{
                       marginTop: '5em',
                     }}
                     pdf={hint.hint_body_pdf_url}
                   />
+                  </>
                 )}
                 {hint.body && (
+                  <>
+                    <Divider
+                      orientation="left"
+                      style={{
+                        marginTop: '1em',
+                      }}
+                    >Hint
+                    </Divider>
                   <Typography.Text
                     style={{
                       marginTop: '1em',
@@ -113,6 +139,7 @@ const HintsAndSolution = props => {
                   >
                     {parseKatex(hint.body)}
                   </Typography.Text>
+                  </>
                 )}
               </Collapse.Panel>
             );
@@ -178,8 +205,13 @@ const HintsAndSolution = props => {
                 }
                 {answer.explanation_video_url && (
                   <div>
-                    <Divider />
-                    <Typography.Text strong> Explanation Video: </Typography.Text>
+                    <Divider
+                      orientation="left"
+                      style={{
+                        marginTop: '1em',
+                      }}
+                    >Explanation Video
+                    </Divider>
                     <Player fluid src={answer.explanation_video_url}>
                       <ControlBar autoHide={false} />
                       <BigPlayButton position="center" />
@@ -188,10 +220,29 @@ const HintsAndSolution = props => {
                 )}
                 {answer.explanation_body_pdf_url && (
                   <div>
-                    <Divider />
-                    <Typography.Text strong> Explanation: </Typography.Text>
+                    <Divider
+                      orientation="left"
+                      style={{
+                        marginTop: '1em',
+                      }}
+                    >Explanation PDF
+                    </Divider>
                     <PdfViewer pdf={answer.explanation_body_pdf_url} />
                   </div>
+                )}
+                {answer.explanation_body && (
+                  <>
+                    <Divider
+                      style={{
+                        marginTop: '1em',
+                      }}
+                      orientation="left">Explanation</Divider>
+                  <Typography.Text
+
+                  >
+                    {parseKatex(answer.explanation_body)}
+                  </Typography.Text>
+                    </>
                 )}
               </>
             )}

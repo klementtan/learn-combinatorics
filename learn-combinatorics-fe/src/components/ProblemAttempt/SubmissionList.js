@@ -45,8 +45,8 @@ const SubmissionList = props => {
       dataIndex: 'status',
       render: status => {
         return {
-          pass: <Tag color={'green'}>Pass</Tag>,
-          fail: <Tag color={'red'}>Fail</Tag>,
+          pass: <Tag color={'green'}>Correct</Tag>,
+          fail: <Tag color={'red'}>Wrong</Tag>,
         }[status];
       },
     },
