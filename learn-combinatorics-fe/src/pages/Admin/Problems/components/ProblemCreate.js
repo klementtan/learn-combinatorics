@@ -21,6 +21,7 @@ const ProblemCreate = props => {
   const [selectedLecture, setSelectedLecture] = useState({});
 
   const onSelectLecture = lectureIdx => {
+    console.log(props.lectures)
     setProblem({ ...problem, lecture_id: lectures[lectureIdx].id });
     setSelectedLecture(lectures[lectureIdx]);
   };
@@ -62,7 +63,7 @@ const ProblemCreate = props => {
             >
               {props.lectures.map((currLecture, idx) => {
                 return (
-                  <Select.Option key={idx} value={currLecture.id}>
+                  <Select.Option key={idx} value={idx}>
                     {currLecture.id}. {currLecture.title}
                   </Select.Option>
                 );

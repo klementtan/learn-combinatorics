@@ -29,9 +29,11 @@ class Api::V1::BaseController < ApplicationController
     if response_json["picture"] && !@user.avatar.attached?
       @user.grab_avatar_from_url(response_json["picture"])
     end
-    default_role = UserDefaultRole.find_by(user_email: @user.primary_email)
-    if default_role
-      @user.add_role(default_role.role)
+    default_roles = UserDefaultRole.where(user_email: @user.primary_email)
+    if default_roles
+      default_roles.each do |default_role|
+        @user.add_role(default_role.role)
+      end
     end
     unless @user.has_role? scope
       raise AuthorizationError, "User not authorized to access #{scope}"

@@ -98,11 +98,17 @@ const UpdateRoleModal = props => {
           defaultValue={roles}
           onChange={handleChange}
           style={{ width: '100%' }}
-          options={Object.keys(ACCESS_LEVELS).map(value => {
-            return { value: value };
-          })}
-        />
-        ,
+        >
+          {Object.keys(ACCESS_LEVELS).map(role =>
+            <Select.Option
+              value={role}
+              key={role}
+              disabled={ACCESS_LEVELS.PUBLIC_USER === role}
+            >
+              {role}
+            </Select.Option>
+          )}
+        </Select>
       </Modal>
     </>
   );

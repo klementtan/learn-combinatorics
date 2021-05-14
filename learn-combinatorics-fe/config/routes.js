@@ -33,12 +33,6 @@ export default [
                 icon: 'AreaChartOutlined',
                 component: './Dashboard',
               },
-              // {
-              //   path: '/settings',
-              //   name: 'Settings',
-              //   icon: 'user',
-              //   component: './Welcome.jsx',
-              // },
               {
                 path: '/admin',
                 name: 'admin',

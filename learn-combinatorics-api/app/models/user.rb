@@ -11,7 +11,7 @@ class User < ApplicationRecord
   has_many :doubt_replies
   has_many :doubt_threads
   def assign_default_role
-    self.add_role(Roles::PUBLIC_USER) if self.roles.blank?
+    self.add_role(Roles::PUBLIC_USER)
   end
   def avatar_url
     url = nil
