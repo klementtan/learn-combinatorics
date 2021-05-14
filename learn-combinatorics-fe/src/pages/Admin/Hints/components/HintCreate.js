@@ -55,7 +55,7 @@ const HintCreate = props => {
             >
               {props.problems.map((currProblem, idx) => {
                 return (
-                  <Select.Option key={idx} value={currProblem.id}>
+                  <Select.Option key={idx} value={idx}>
                     {currProblem.id}. {currProblem.title}
                   </Select.Option>
                 );
