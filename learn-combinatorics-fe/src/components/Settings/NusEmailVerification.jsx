@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import {Card, Row, Col, Avatar, Button, Form, Input, Divider, Typography, Tag, Alert} from 'antd';
 import {verifyNusEmailRequest, verifyOtp} from "@/services/user"
-import {UserAccessLevelTag} from "@/components/Users/UsersAccessLevel";
+import {ACCESS_LEVELS, UserAccessLevelTag} from "@/components/Users/UsersAccessLevel";
 import {connect} from "umi";
 
 const NusEmailVerification = (props) => {
@@ -22,7 +22,7 @@ const NusEmailVerification = (props) => {
   }
   const onSubmitOtp = async (otp) => {
     setSubmitOtpLoading(true)
-    verifyOtp(otp).then(() => {
+    await verifyOtp(otp).then(() => {
         setSubmitOtpResponse({success: "Email Verified"})
     }).catch((err) => {
       setSubmitOtpResponse({error: "Invalid OTP entered"})
@@ -46,11 +46,13 @@ const NusEmailVerification = (props) => {
           role={role.name} key={idx}/>)
       })
     )
-
+  }
+  const isNusEmailVerified = () => {
+    return currentUser.roles.map(role => role.name).includes(ACCESS_LEVELS.NUS_USER)
   }
   return(
     <Card
-      title={"Access Level"}
+      title={"Profile"}
       style={{marginTop: "1em"}}
     >
       <Row
@@ -63,7 +65,9 @@ const NusEmailVerification = (props) => {
           initialValues={{ nus_email:currentUser.nus_email }}
           onFinish={onFinishSendEmail}
         >
-          <Form.Item>
+          <Form.Item
+            label={"Access Levels"}
+          >
             {
               renderAccessLevelTags()
             }
@@ -72,12 +76,14 @@ const NusEmailVerification = (props) => {
             label="Nus Email"
             name="nus_email"
           >
-            <Input />
+            <Input
+              disabled={isNusEmailVerified()}
+            />
           </Form.Item>
 
 
           <Form.Item >
-            <Button type="primary" htmlType="submit" loading={submitEmailLoading}>
+            <Button type="primary" htmlType="submit" loading={submitEmailLoading} disabled={isNusEmailVerified()}>
               Send OTP to email
             </Button>
             {
