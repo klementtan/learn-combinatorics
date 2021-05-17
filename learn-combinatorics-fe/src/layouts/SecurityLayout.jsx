@@ -32,7 +32,7 @@ const SecurityLayout = (props) => {
   // 你可以把它替换成你自己的登录认证规则（比如判断 token 是否存在）
   const token = localStorage.getItem('learn-combinatorics-token')
   if (!token) {
-    return <Redirect to={`#/user/login?action=logout`} />;
+    return <Redirect to={`/user/login?action=logout`} />;
   }
 
   const isLogin = currentUser && currentUser.id;
@@ -42,7 +42,7 @@ const SecurityLayout = (props) => {
   }
 
     if (isReady && !isLogin && !window.location.pathname.includes('/user/login')) {
-    return <Redirect to={`#/user/login?action=logout`} />;
+    return <Redirect to={`/user/login?action=logout`} />;
   }
 
   return children;

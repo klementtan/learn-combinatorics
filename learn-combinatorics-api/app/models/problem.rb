@@ -7,7 +7,7 @@ class Problem < ApplicationRecord
   has_one :answer, dependent: :destroy, inverse_of: :problem
   has_many :hints, -> { order(position: :asc) }, dependent: :destroy, inverse_of: :problem
   has_many :attempts, dependent: :destroy, inverse_of: :problem
-  validates :title, :body, :difficulty, presence: true
+  validates :title, :difficulty, presence: true
   has_one_attached :problem_pdf
   enum privilege_level: { PUBLIC_USER: 0, NUS_USER: 1, MOD_USER: 2, ADMIN: 3 }
   acts_as_list scope: :lecture

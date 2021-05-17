@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+require 'uri'
 
 class Api::V1::DoubtsController < Api::V1::BaseController
   def create_doubt_thread
@@ -9,6 +10,7 @@ class Api::V1::DoubtsController < Api::V1::BaseController
     raise InvalidRequestError, 'Doubt thread already exists' unless attempt.doubt_thread.nil?
 
     doubt_thread = attempt.create_doubt_thread!(doubt_thread_payload)
+    send_telegram("New doubt created by #{@user.name} for #{attempt.problem.title}")
     render json: doubt_thread, serializer: DoubtThreadSerializer, adapter: :json, root: 'doubt_thread'
   end
 
@@ -83,6 +85,7 @@ class Api::V1::DoubtsController < Api::V1::BaseController
 
     doubt_thread.save
     doubt_thread.reload
+    send_telegram("New doubt reply by #{@user.name} for #{doubt_thread.attempt.problem.title}")
     render json: doubt_thread, serializer: DoubtThreadSerializer, adapter: :json, root: 'doubt_thread'
   end
 
@@ -109,5 +112,11 @@ class Api::V1::DoubtsController < Api::V1::BaseController
       raise AuthorizationError, "Doubt #{doubt_thread.id} does not belong to user #{@user}"
     end
     doubt_thread
+  end
+
+  def send_telegram(text)
+    encoded_text = URI.encode(text)
+    url = "https://api.telegram.org/#{ENV['TELEGRAM_BOT_TOKEN']}/sendMessage?chat_id=#{ENV['TELEGRAM_CHAT_ID']}&text=#{encoded_text}"
+    HTTParty.post(url)
   end
 end

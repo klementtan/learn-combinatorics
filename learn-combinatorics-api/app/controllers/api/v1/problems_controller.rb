@@ -23,7 +23,7 @@ class Api::V1::ProblemsController < Api::V1::BaseController
       attempt = nil
       problem_hash = ProblemSerializer.new(problem).serializable_hash
       problem.attempts.each do |curr_attempt|
-        if curr_attempt.user == @user.id
+        if curr_attempt.user.id == @user.id
           attempt = curr_attempt
         end
       end
