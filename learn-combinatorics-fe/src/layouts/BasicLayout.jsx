@@ -51,8 +51,7 @@ const defaultFooterDom = (
       {
         key: 'github',
         title: <GithubOutlined />,
-        // TODO add github
-        href: 'https://github.com/ant-design/ant-design-pro',
+        href: 'https://github.com/klementtan/learn-combinatorics',
         blankTarget: true,
       },
     ]}
