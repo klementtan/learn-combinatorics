@@ -5,7 +5,7 @@
 Platform to allow teachers to create mathematical problems and allow their
 students to practice.
 
-![Learn Combinatorics homepage](/cover.png)
+![Learn Combinatorics homepage](/cover.jpg)
 
 Overview
 
