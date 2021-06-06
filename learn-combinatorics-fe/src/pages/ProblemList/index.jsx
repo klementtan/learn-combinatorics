@@ -225,7 +225,6 @@ const ProblemList = () => {
         return record.attempt && value === record.attempt.status && record
       },
       render: (problem) => {
-        console.log(problem)
         if (problem.attempt){
           return <AttemptStatusTag key={problem.id + "_tag"} status={problem.status}/>
         } else {
