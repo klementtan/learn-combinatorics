@@ -14,8 +14,8 @@ const ProblemDisplay = props => {
   const [numPages, setNumPages] = useState(null);
   const [pageNumber, setPageNumber] = useState(1);
   const { problem } = props.attempt;
-  const { problem_pdf_url_raw, body } = problem;
-  const problem_pdf_url = problem_pdf_url_raw && problem_pdf_url_raw.includes("http://") ? problem_pdf_url_raw.replace("http://", "https://") : problem_pdf_url_raw
+  const { problem_pdf_url: problemPdfUrlRaw, body } = problem;
+  const problemPdfUrl = problemPdfUrlRaw && problemPdfUrlRaw.includes("http://") ? problemPdfUrlRaw.replace("http://", "https://") : problemPdfUrlRaw
 
   function onDocumentLoadSuccess({ numPages }) {
     setNumPages(numPages);
@@ -28,14 +28,14 @@ const ProblemDisplay = props => {
         marginBottom: '1em',
       }}
     >
-      {problem_pdf_url && (
+      {problemPdfUrl && (
         <SizeMe
           monitorHeight
           refreshRate={128}
           refreshMode={'debounce'}
           render={({ size }) => (
             <div>
-              <Document file={problem_pdf_url} onLoadSuccess={onDocumentLoadSuccess}>
+              <Document file={problemPdfUrl} onLoadSuccess={onDocumentLoadSuccess}>
                 <Page width={size.width} pageNumber={pageNumber} />
               </Document>
             </div>
