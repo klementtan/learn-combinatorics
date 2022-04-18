@@ -11,6 +11,7 @@ const Pdf = props => {
   const { difficulty, title, className, size, color, ...rest } = props;
   const [numPages, setNumPages] = useState(null);
   const [pageNumber, setPageNumber] = useState(1);
+  const pdf = props.pdf && props.pdf.includes("http") ? props.pdf.replace("http", "https") : props.pdf
 
   function onDocumentLoadSuccess({ numPages }) {
     setNumPages(numPages);
@@ -24,7 +25,7 @@ const Pdf = props => {
         refreshMode={'debounce'}
         render={({ size }) => (
           <div>
-            <Document file={props.pdf} onLoadSuccess={onDocumentLoadSuccess}>
+            <Document file={pdf} onLoadSuccess={onDocumentLoadSuccess}>
               <Page width={size.width} pageNumber={pageNumber} />
             </Document>
           </div>

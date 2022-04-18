@@ -11,6 +11,7 @@ const PdfViewer = props => {
   const [numPages, setNumPages] = useState(null);
   const [pageNumber, setPageNumber] = useState(1);
   const [isModalVisible, setIsModalVisible] = useState(false);
+  const pdf = props.pdf && props.pdf.includes("http") ? props.pdf.replace("http", "https") : props.pdf
 
   const showModal = () => {
     setIsModalVisible(true);
@@ -40,7 +41,7 @@ const PdfViewer = props => {
             refreshMode={'debounce'}
             render={({ size }) => (
               <div>
-                <Document file={props.pdf} onLoadSuccess={onDocumentLoadSuccess}>
+                <Document file={pdf} onLoadSuccess={onDocumentLoadSuccess}>
                   <Page width={size.width} pageNumber={pageNumber} />
                 </Document>
               </div>

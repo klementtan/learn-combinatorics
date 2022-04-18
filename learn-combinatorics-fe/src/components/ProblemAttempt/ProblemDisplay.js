@@ -15,7 +15,7 @@ const ProblemDisplay = props => {
   const [pageNumber, setPageNumber] = useState(1);
   const { problem } = props.attempt;
   const { problem_pdf_url_raw, body } = problem;
-  const problem_pdf_url = problem_pdf_url.includes("http://") ? problem_pdf_url_raw.replace("http://", "https://") : problem_pdf_url_raw
+  const problem_pdf_url = problem_pdf_url && problem_pdf_url?.includes("http://") ? problem_pdf_url_raw.replace("http://", "https://") : problem_pdf_url_raw
 
   function onDocumentLoadSuccess({ numPages }) {
     setNumPages(numPages);
