@@ -62,7 +62,7 @@ class Api::V1::UsersController < Api::V1::BaseController
         'from': {
             'email': 'noreply@learn-combinatorics.com'
         },
-        'template_id': 'd-f305ffa6b4e848f785131abf69530a70'
+        'template_id': 'd-d8b8489cb40646f89f46a74c34e51137'
     }
     sg = SendGrid::API.new(api_key: ENV['SEND_GRID_API_KEY'])
     response = sg.client.mail._("send").post(request_body: JSON[data])
