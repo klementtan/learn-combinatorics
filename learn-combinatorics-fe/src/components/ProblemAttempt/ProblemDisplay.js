@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 
 import { Layout, Typography, Card, Row, Col } from 'antd';
+import { parseKatex } from '@/utils/Katex';
 
 import { Document, Page } from 'react-pdf';
 import { pdfjs } from 'react-pdf';
@@ -28,6 +29,7 @@ const ProblemDisplay = props => {
         marginBottom: '1em',
       }}
     >
+      {body && body.split("\n").map(line=><Typography.Paragraph>{parseKatex(body)}</Typography.Paragraph>)}
       {problemPdfUrl && (
         <SizeMe
           monitorHeight
@@ -42,7 +44,6 @@ const ProblemDisplay = props => {
           )}
         />
       )}
-      {body && <Typography.Paragraph>{body}</Typography.Paragraph>}
     </Card>
   );
 };

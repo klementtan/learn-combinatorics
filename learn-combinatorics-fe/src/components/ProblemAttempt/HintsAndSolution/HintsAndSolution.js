@@ -84,6 +84,25 @@ const HintsAndSolution = (props) => {
                   </Typography.Text>
                 }
               >
+                {hint.body && (
+                  <>
+                    <Divider
+                      orientation="left"
+                      style={{
+                        marginTop: '1em',
+                      }}
+                    >
+                      Hint
+                    </Divider>
+                    <Typography.Text
+                      style={{
+                        marginTop: '1em',
+                      }}
+                    >
+                      {parseKatex(hint.body)}
+                    </Typography.Text>
+                  </>
+                )}
                 {hint.hint_video_url && (
                   <>
                     <Divider
@@ -124,25 +143,6 @@ const HintsAndSolution = (props) => {
                       }}
                       pdf={hint.hint_body_pdf_url}
                     />
-                  </>
-                )}
-                {hint.body && (
-                  <>
-                    <Divider
-                      orientation="left"
-                      style={{
-                        marginTop: '1em',
-                      }}
-                    >
-                      Hint
-                    </Divider>
-                    <Typography.Text
-                      style={{
-                        marginTop: '1em',
-                      }}
-                    >
-                      {parseKatex(hint.body)}
-                    </Typography.Text>
                   </>
                 )}
               </Collapse.Panel>
@@ -206,7 +206,21 @@ const HintsAndSolution = (props) => {
                     <Typography.Text strong> Answer: </Typography.Text>{' '}
                     {parseAnswer(answer.answer_value_numerator, answer.answer_value_denominator)}
                   </div>
-                }
+                }{answer.explanation_body && (
+                  <>
+                    <Divider
+                      style={{
+                        marginTop: '1em',
+                      }}
+                      orientation="left"
+                    >
+                      Explanation
+                    </Divider>
+                    {answer.explanation_body.split('\n').map((line) => (
+                      <Typography.Text>{parseKatex(line)}</Typography.Text>
+                    ))}
+                  </>
+                )}
                 {answer.explanation_video_url && (
                   <div>
                     <Divider
@@ -236,21 +250,7 @@ const HintsAndSolution = (props) => {
                     <PdfViewer pdf={answer.explanation_body_pdf_url} />
                   </div>
                 )}
-                {answer.explanation_body && (
-                  <>
-                    <Divider
-                      style={{
-                        marginTop: '1em',
-                      }}
-                      orientation="left"
-                    >
-                      Explanation
-                    </Divider>
-                    {answer.explanation_body.split('\n').map((line) => (
-                      <Typography.Text>{parseKatex(line)}</Typography.Text>
-                    ))}
-                  </>
-                )}
+                
               </>
             )}
           </Collapse.Panel>
