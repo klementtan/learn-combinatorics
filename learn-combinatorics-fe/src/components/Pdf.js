@@ -11,7 +11,7 @@ const Pdf = props => {
   const { difficulty, title, className, size, color, ...rest } = props;
   const [numPages, setNumPages] = useState(null);
   const [pageNumber, setPageNumber] = useState(1);
-  const pdf = props.pdf && props.pdf.includes("http") ? props.pdf.replace("http", "https") : props.pdf
+  let pdf = props.pdf && typeof props.pdf.includes === 'function' && props.pdf.includes("http") ? props.pdf.replace("http", "https") : props.pdf
 
   function onDocumentLoadSuccess({ numPages }) {
     setNumPages(numPages);
