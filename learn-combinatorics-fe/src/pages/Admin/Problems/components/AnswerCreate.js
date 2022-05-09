@@ -108,7 +108,8 @@ const AnswerCreate = props => {
             rules={[{ required: true, message: 'Please input title of problem' }]}
           >
             {previewMode ? (
-              <Typography.Paragraph>{parseKatex(answer.explanation_body)}</Typography.Paragraph>
+              answer.explanation_body.split("\n").map(line => 
+              <Typography.Paragraph>{parseKatex(line)}</Typography.Paragraph>)
             ) : (
               <Input.TextArea
                 rows={4}

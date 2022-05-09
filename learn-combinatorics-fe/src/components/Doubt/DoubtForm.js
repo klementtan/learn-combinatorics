@@ -62,10 +62,8 @@ const DoubtForm = props => {
           {previewMode ? (
             <Form.Item>
               {' '}
-              {parseKatex(doubtThread.doubt_thread.body).map(div => {
-                return div;
-              })}{' '}
-            </Form.Item>
+              {doubtThread.doubt_thread.body.split("\n").map(line => parseKatex(line))}
+              </Form.Item>
           ) : (
             <Input.TextArea disabled={props.user.id !== props.attempt.user.id} rows={4} />
           )}

@@ -70,7 +70,8 @@ const DoubtThreadReplies = props => {
         <Typography.Title level={4}>Replies</Typography.Title>
         <Form.Item>
           {previewMode ? (
-            parseKatex(reply.doubt_reply.body)
+            reply.doubt_reply.body.split("\n").map(line => 
+            parseKatex(line))
           ) : (
             <Input.TextArea value={reply.doubt_reply.body} onChange={handleReplyChange} rows={2} />
           )}

@@ -5,7 +5,7 @@ import { parseKatex } from '@/utils/Katex';
 import DoubtThreadReplies from './DoubtThreadReplies';
 import { connect } from 'umi';
 
-const DoubtThreadDisplay = props => {
+const DoubtThreadDisplay = (props) => {
   const [loading, setLoading] = useState(false);
 
   const { attempt } = props;
@@ -51,13 +51,15 @@ const DoubtThreadDisplay = props => {
         )
       }
     >
-      <Typography.Paragraph
-        style={{
-          marginBottom: '2em',
-        }}
-      >
-        {parseKatex(doubtThread && doubtThread.body)}
-      </Typography.Paragraph>
+      {(doubtThread && doubtThread.body).split('\n').map((line) => (
+        <Typography.Paragraph
+          style={{
+            marginBottom: '2em',
+          }}
+        >
+          {parseKatex(line)}
+        </Typography.Paragraph>
+      ))}
       <Divider />
       <DoubtThreadReplies
         attempt={props.attempt}

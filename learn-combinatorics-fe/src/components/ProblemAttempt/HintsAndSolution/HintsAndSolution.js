@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react';
-import {Typography, Breadcrumb, Menu, Table, Tag, Card, Button, Collapse, Col} from 'antd';
+import { Typography, Breadcrumb, Menu, Table, Tag, Card, Button, Collapse, Col } from 'antd';
 import { LockTwoTone, UnlockTwoTone } from '@ant-design/icons';
 import { unlockAttemptHint, unlockAttemptAnswer } from '@/services/attempt';
 import { Player, ControlBar, BigPlayButton } from 'video-react';
@@ -10,14 +10,14 @@ import './HintsAndSolution.css';
 import Row from 'antd/es/descriptions/Row';
 import Divider from 'antd/es/divider';
 
-const HintsAndSolution = props => {
+const HintsAndSolution = (props) => {
   const attempt = props.attempt;
   const { hints, answer } = attempt;
   const [loading, setLoading] = useState(false);
   const unlockHint = async () => {
     await setLoading(true);
     unlockAttemptHint(attempt.id)
-      .then(async response => {
+      .then(async (response) => {
         const { dispatch } = props;
         if (dispatch) {
           await dispatch({
@@ -27,7 +27,7 @@ const HintsAndSolution = props => {
         }
         setLoading(false);
       })
-      .catch(error => {
+      .catch((error) => {
         setLoading(false);
       });
   };
@@ -47,7 +47,7 @@ const HintsAndSolution = props => {
   const unlockAnswer = async () => {
     await setLoading(true);
     unlockAttemptAnswer(attempt.id)
-      .then(async response => {
+      .then(async (response) => {
         const { dispatch } = props;
         if (dispatch) {
           await dispatch({
@@ -57,7 +57,7 @@ const HintsAndSolution = props => {
         }
         setLoading(false);
       })
-      .catch(error => {
+      .catch((error) => {
         setLoading(false);
       });
   };
@@ -86,23 +86,25 @@ const HintsAndSolution = props => {
               >
                 {hint.hint_video_url && (
                   <>
-                  <Divider
-                    orientation="left"
-                    style={{
-                      marginTop: '1em',
-                    }}
-                  > Hint Video
-                  </Divider>
-                  <Player
-                    fluid
-                    src={hint.hint_video_url}
-                    style={{
-                      marginTop: '5em',
-                    }}
-                  >
-                    <ControlBar autoHide={false} />
-                    <BigPlayButton position="center" />
-                  </Player>
+                    <Divider
+                      orientation="left"
+                      style={{
+                        marginTop: '1em',
+                      }}
+                    >
+                      {' '}
+                      Hint Video
+                    </Divider>
+                    <Player
+                      fluid
+                      src={hint.hint_video_url}
+                      style={{
+                        marginTop: '5em',
+                      }}
+                    >
+                      <ControlBar autoHide={false} />
+                      <BigPlayButton position="center" />
+                    </Player>
                   </>
                 )}
 
@@ -113,14 +115,15 @@ const HintsAndSolution = props => {
                       style={{
                         marginTop: '1em',
                       }}
-                    >Hint PDF
+                    >
+                      Hint PDF
                     </Divider>
-                  <PdfViewer
-                    style={{
-                      marginTop: '5em',
-                    }}
-                    pdf={hint.hint_body_pdf_url}
-                  />
+                    <PdfViewer
+                      style={{
+                        marginTop: '5em',
+                      }}
+                      pdf={hint.hint_body_pdf_url}
+                    />
                   </>
                 )}
                 {hint.body && (
@@ -130,15 +133,16 @@ const HintsAndSolution = props => {
                       style={{
                         marginTop: '1em',
                       }}
-                    >Hint
+                    >
+                      Hint
                     </Divider>
-                  <Typography.Text
-                    style={{
-                      marginTop: '1em',
-                    }}
-                  >
-                    {parseKatex(hint.body)}
-                  </Typography.Text>
+                    <Typography.Text
+                      style={{
+                        marginTop: '1em',
+                      }}
+                    >
+                      {parseKatex(hint.body)}
+                    </Typography.Text>
                   </>
                 )}
               </Collapse.Panel>
@@ -210,7 +214,8 @@ const HintsAndSolution = props => {
                       style={{
                         marginTop: '1em',
                       }}
-                    >Explanation Video
+                    >
+                      Explanation Video
                     </Divider>
                     <Player fluid src={answer.explanation_video_url}>
                       <ControlBar autoHide={false} />
@@ -225,7 +230,8 @@ const HintsAndSolution = props => {
                       style={{
                         marginTop: '1em',
                       }}
-                    >Explanation PDF
+                    >
+                      Explanation PDF
                     </Divider>
                     <PdfViewer pdf={answer.explanation_body_pdf_url} />
                   </div>
@@ -236,13 +242,14 @@ const HintsAndSolution = props => {
                       style={{
                         marginTop: '1em',
                       }}
-                      orientation="left">Explanation</Divider>
-                  <Typography.Text
-
-                  >
-                    {parseKatex(answer.explanation_body)}
-                  </Typography.Text>
-                    </>
+                      orientation="left"
+                    >
+                      Explanation
+                    </Divider>
+                    {answer.explanation_body.split('\n').map((line) => (
+                      <Typography.Text>{parseKatex(line)}</Typography.Text>
+                    ))}
+                  </>
                 )}
               </>
             )}

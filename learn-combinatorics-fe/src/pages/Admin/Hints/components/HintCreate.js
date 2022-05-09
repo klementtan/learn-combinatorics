@@ -81,8 +81,9 @@ const HintCreate = props => {
             rules={[{ required: true, message: 'Please input body of hint' }]}
           >
             {previewMode ? (
-              <Typography.Paragraph>{parseKatex(hint.hint.body)}</Typography.Paragraph>
-            ) : (
+              hint.hint.body.split("\n").map(line => 
+              <Typography.Paragraph>{parseKatex(line)}</Typography.Paragraph>
+              )) : (
               <Input.TextArea
                 rows={4}
                 onChange={e =>

@@ -127,8 +127,9 @@ const ProblemCreate = props => {
             rules={[{ required: true, message: 'Please input title of problem' }]}
           >
             {previewMode ? (
-              <Typography.Paragraph>{parseKatex(problem.problem.body)}</Typography.Paragraph>
-            ) : (
+              problem.problem.body.split("\n").map(line => 
+              <Typography.Paragraph>{parseKatex(line)}</Typography.Paragraph> 
+            )) : (
               <Input.TextArea
                 rows={4}
                 onChange={e =>

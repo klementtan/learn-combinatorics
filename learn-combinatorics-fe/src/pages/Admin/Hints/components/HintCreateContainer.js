@@ -25,6 +25,7 @@ import AnswerExplanationPdf from '@/pages/Admin/Problems/components/AnswerExplan
 import Tooltip from 'antd/es/tooltip';
 
 const HintCreateContainer = props => {
+  const { dispatch } = props;
   const [success, setSuccess] = useState(false);
   const [loading, setLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
